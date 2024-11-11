@@ -119,7 +119,7 @@
                             </select>
                         </div>
 
-                        @foreach (['image_preview' => 'Preview Image', 'image_header' => 'Header Image'] as $name => $label)
+                        @foreach (['image_preview' => 'Preview Image', 'image_banner' => 'Banner Image', 'image_header' => 'Header Image'] as $name => $label)
                             <div class="mb-4">
                                 <h5 class="mb-3">{{ $label }}</h5>
                                 <div class="file-upload-wrapper">

@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/landing', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/service', [HomeController::class, 'service'])->name('service');
 Route::get('service/{uuid}', [HomeController::class, 'serviceDetail'])->name('service.detail');
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/blog/{uuid}', [HomeController::class, 'blogDetail'])->name('blog.detail');
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

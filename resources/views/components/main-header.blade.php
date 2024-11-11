@@ -52,7 +52,7 @@
                         <nav class="main-menu style1 navbar-expand-md navbar-light">
                             <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li><a href="/landing">Home</a></li>
+                                    <li><a href="/">Home</a></li>
                                     <li><a href="/about">Tentang</a></li>
                                     <li class="dropdown"><a href="#">Layanan</a>
                                         <ul>
@@ -67,13 +67,13 @@
                                     </li>
                                     <li class="dropdown"><a href="#">Halaman</a>
                                     	<ul>
-                                            <li><a href="shop-details.html">Produk Kami</a></li>
-                                            <li><a href="team.html">Team Smartpetscare</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
+                                            <li><a href="/product">Produk Kami</a></li>
+                                            <li><a href="/team">Team Smartpetscare</a></li>
+                                            <li><a href="/faq">Faq</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">Berita</a></li>
-                                    <li><a href="contact.html">Kontak</a></li>
+                                    <li><a href="/blog">Berita</a></li>
+                                    <li><a href="/contact">Kontak</a></li>
                                 </ul>
                             </div>
                         </nav>                        

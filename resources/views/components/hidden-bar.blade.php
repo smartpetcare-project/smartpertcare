@@ -37,7 +37,7 @@
         </div>
         <!-- Start Login Button Section -->
         <div class="login-btn-box mt-5">
-            <a href="login.html" class="btn btn-primary"
+            <a href="/login" class="btn btn-primary"
                 style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-align: center; text-decoration: none; border-radius: 5px;">
                 Login
             </a>
