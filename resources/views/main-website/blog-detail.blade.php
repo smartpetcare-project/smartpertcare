@@ -62,17 +62,8 @@
                                             $beforeLastParagraph = $contentParts[count($contentParts) - 3];
                                             $lastParagraph = $contentParts[count($contentParts) - 2];
                                         @endphp
-                                        {!! $firstParagraph !!}
 
-                                        @if ($article['image_content'])
-                                            <div class="blog-details-image-1">
-                                                <img src="{{ $firstImages[0] }}" alt="">
-                                            </div>
-                                        @endif
-
-
-                                        @php
-                                            // Inject middle images within middle content paragraphs
+                                        @php                                            
                                             $insertedMiddleContent = '';
                                             foreach ($middleContentParts as $index => $part) {
                                                 $insertedMiddleContent .= $part . '</p>';
@@ -86,6 +77,18 @@
                                                 }
                                             }
                                         @endphp
+
+                                        {!! $firstParagraph !!}
+
+                                        @if ($article['image_content'])
+                                            <div class="blog-details-image-1">
+                                                <img src="{{ $firstImages[0] }}" alt="">
+                                            </div>
+                                        @endif
+
+                                        {!! $insertedMiddleContent !!}
+
+                                        
                                     </div>
 
                                     <div class="blog-details-image-2">
