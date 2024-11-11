@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Article
+    Artikel
 @endsection
 @section('content')
     <x-page-title title="Artikel" subtitle="Views" />
@@ -13,7 +13,7 @@
                 class="text-secondary">({{ $countArticleUnpublish }})</span></a>
     </div>
 
-    <div class="row g-3">
+    <div class="row g-3 d-flex justify-content-between">
         <div class="col-auto">
             <div class="position-relative">
                 <input class="form-control px-5" type="search" placeholder="Search Products">
@@ -21,7 +21,7 @@
                     class="material-icons-outlined position-absolute ms-3 translate-middle-y start-0 top-50 fs-5">search</span>
             </div>
         </div>
-        <div class="col-auto flex-grow-1 overflow-auto">
+        {{-- <div class="col-auto flex-grow-1 overflow-auto">
             <div class="btn-group position-static">
                 <div class="btn-group position-static">
                     <button type="button" class="btn btn-filter dropdown-toggle px-4" data-bs-toggle="dropdown"
@@ -66,7 +66,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-auto">
             <div class="d-flex align-items-center gap-2 justify-content-lg-end">
                 <button class="btn btn-filter px-4"><i class="bi bi-box-arrow-right me-2"></i>Export</button>
@@ -83,10 +83,7 @@
                 <div class="table-responsive white-space-nowrap">
                     <table class="table align-middle pb-5">
                         <thead class="table-light">
-                            <tr>
-                                <th>
-                                    <input class="form-check-input" type="checkbox">
-                                </th>
+                            <tr>                                
                                 <th>Judul Artikel</th>
                                 <th>Kategori</th>
                                 <th>Rating</th>
@@ -96,10 +93,7 @@
                         </thead>
                         <tbody>
                             @foreach ($articles as $item)
-                                <tr>
-                                    <td>
-                                        <input class="form-check-input" type="checkbox">
-                                    </td>
+                                <tr>                                    
                                     <td>
                                         <div class="d-flex align-items-center gap-3">
                                             <div class="product-box">

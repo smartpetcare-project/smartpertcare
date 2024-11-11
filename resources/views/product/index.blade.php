@@ -13,60 +13,14 @@
                 class="text-secondary">({{ $countProductUnpublish }})</span></a>
     </div>
 
-    <div class="row g-3">
+    <div class="row g-3 d-flex justify-content-between">
         <div class="col-auto">
             <div class="position-relative">
                 <input class="form-control px-5" type="search" placeholder="Search Products">
                 <span
                     class="material-icons-outlined position-absolute ms-3 translate-middle-y start-0 top-50 fs-5">search</span>
             </div>
-        </div>
-        <div class="col-auto flex-grow-1 overflow-auto">
-            <div class="btn-group position-static">
-                <div class="btn-group position-static">
-                    <button type="button" class="btn btn-filter dropdown-toggle px-4" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Category
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="javascript:;">Action</a></li>
-                        <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group position-static">
-                    <button type="button" class="btn btn-filter dropdown-toggle px-4" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Vendor
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="javascript:;">Action</a></li>
-                        <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group position-static">
-                    <button type="button" class="btn btn-filter dropdown-toggle px-4" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Collection
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="javascript:;">Action</a></li>
-                        <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        </div>        
         <div class="col-auto">
             <div class="d-flex align-items-center gap-2 justify-content-lg-end">
                 <button class="btn btn-filter px-4"><i class="bi bi-box-arrow-right me-2"></i>Export</button>
@@ -83,10 +37,7 @@
                 <div class="table-responsive white-space-nowrap">
                     <table class="table align-middle">
                         <thead class="table-light">
-                            <tr>
-                                <th>
-                                    <input class="form-check-input" type="checkbox">
-                                </th>
+                            <tr>                                
                                 <th>Product Name</th>
                                 <th>Price</th>
                                 <th>Category</th>
@@ -97,10 +48,7 @@
                         </thead>
                         <tbody>
                             @foreach ($products as $item)
-                                <tr>
-                                    <td>
-                                        <input class="form-check-input" type="checkbox">
-                                    </td>
+                                <tr>                                    
                                     <td>
                                         <div class="d-flex align-items-center gap-3">
                                             <div class="product-box">

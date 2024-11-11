@@ -5,7 +5,7 @@
                <img src="{{ URL::asset('build/images/logo-icon.png') }}" class="logo-img" alt="">
            </div>
            <div class="logo-name flex-grow-1">
-               <h5 class="mb-0">Maxton</h5>
+               <h5 class="mb-0">SmartPet Care</h5>
            </div>
            <div class="sidebar-close">
                <span class="material-icons-outlined">close</span>
@@ -21,65 +21,21 @@
                        <div class="menu-title">Dashboard</div>
                    </a>
                    <ul>
-                       <li><a href="{{ url('/index') }}"><i class="material-icons-outlined">arrow_right</i>Analysis</a>
-                       </li>
-                       <li><a href="{{ url('/index2') }}"><i
-                                   class="material-icons-outlined">arrow_right</i>eCommerce</a>
-                       </li>
+                       <li><a href="{{ url('/admin') }}"><i class="material-icons-outlined">arrow_right</i>Analysis</a>
+                       </li>                       
                    </ul>
-               </li>
-               <li>
-                   <a href="javascript:;" class="has-arrow">
-                       <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-                       </div>
-                       <div class="menu-title">Widgets</div>
-                   </a>
-                   <ul>
-                       <li><a href="{{ url('/widgets-data') }}"><i
-                                   class="material-icons-outlined">arrow_right</i>Data</a>
-                       </li>
-                       <li><a href="{{ url('/widgets-static') }}"><i
-                                   class="material-icons-outlined">arrow_right</i>Static</a>
-                       </li>
-                   </ul>
-               </li>
-               <li>
-                   <a class="has-arrow" href="javascript:;">
-                       <div class="parent-icon"><i class="material-icons-outlined">apps</i>
-                       </div>
-                       <div class="menu-title">Apps</div>
-                   </a>
-                   <ul>
-                       <li><a href="{{ url('/app-emailbox') }}"><i class="material-icons-outlined">arrow_right</i>Email
-                               Box</a>
-                       </li>
-                       <li><a href="{{ url('/app-emailread') }}"><i class="material-icons-outlined">arrow_right</i>Email
-                               Read</a>
-                       </li>
-                       <li><a href="{{ url('/app-chat-box') }}"><i
-                                   class="material-icons-outlined">arrow_right</i>Chat</a>
-                       </li>
-                       <li><a href="{{ url('/app-fullcalender') }}"><i
-                                   class="material-icons-outlined">arrow_right</i>Calendar</a>
-                       </li>
-                       <li><a href="{{ url('/app-to-do') }}"><i class="material-icons-outlined">arrow_right</i>To do</a>
-                       </li>
-                       <li><a href="{{ url('/app-invoice') }}"><i
-                                   class="material-icons-outlined">arrow_right</i>Invoice</a>
-                       </li>
-                   </ul>
-               </li>
-               <li class="menu-label">UI Elements</li>
-               <li>
+               </li>                              
+               {{-- <li class="menu-label">UI Elements</li> --}}
+               {{-- <li>
                    <a href="{{ url('/cards') }}">
                        <div class="parent-icon"><i class="material-icons-outlined">inventory_2</i>
                        </div>
                        <div class="menu-title">Cards</div>
                    </a>
-               </li>
+               </li> --}}
                <li>
                    <a class="has-arrow" href="javascript:;">
-                       <div class="parent-icon"><i class="material-icons-outlined">inventory_2</i>
+                       <div class="parent-icon" style="font-size: 25px"><i class="fadeIn animated bx bx-world"></i>
                        </div>
                        <div class="menu-title">Website Utama</div>
                    </a>
@@ -87,42 +43,45 @@
                        <li>
                            <a class="has-arrow" href="javascript:;">
                                <i class="material-icons-outlined">arrow_right</i>
-                                Banner
+                               Banner
                            </a>
                            <ul>
                                <li>
-                                    <a href="{{ url('/admin/banner') }}">
-                                        <i class="material-icons-outlined">arrow_right</i>
-                                        View
-                                    </a>
+                                   <a href="{{ url('/admin/banner') }}">
+                                       <i class="material-icons-outlined">arrow_right</i>
+                                       View
+                                   </a>
                                </li>
                                <li>
-                                    <a href="{{ url('/admin/banner/create') }}">
-                                        <i class="material-icons-outlined">arrow_right</i>
-                                        Add
-                                    </a>
+                                   <a href="{{ url('/admin/banner/create') }}">
+                                       <i class="material-icons-outlined">arrow_right</i>
+                                       Tambah Banner
+                                   </a>
                                </li>
                            </ul>
-                       </li>
-                   </ul>
-               </li>               
-               <li>
-                   <a href="javascript:;" class="has-arrow">
-                       <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
-                       </div>
-                       <div class="menu-title">Product</div>
-                   </a>
-                   <ul>
-                       <li><a href="{{ url('/admin/product') }}"><i class="material-icons-outlined">arrow_right</i>Views</a>
-                       </li>
-                       <li><a href="{{ url('/admin/product/create') }}"><i class="material-icons-outlined">arrow_right</i>Add
-                               Product</a>
                        </li>
                    </ul>
                </li>
                <li>
                    <a href="javascript:;" class="has-arrow">
-                       <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i></div>
+                       <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
+                       </div>
+                       <div class="menu-title">Produk</div>
+                   </a>
+                   <ul>
+                       <li><a href="{{ url('/admin/product') }}"><i
+                                   class="material-icons-outlined">arrow_right</i>Views</a>
+                       </li>
+                       <li><a href="{{ url('/admin/product/create') }}"><i
+                                   class="material-icons-outlined">arrow_right</i>Tambah
+                               Produk</a>
+                       </li>
+                   </ul>
+               </li>
+               <li>
+                   <a href="javascript:;" class="has-arrow">
+                       <div class="parent-icon" style="font-size: 25px"><i
+                               class="fadeIn animated bx bx-book-content"></i></div>
                        <div class="menu-title">Artikel</div>
                    </a>
                    <ul>
@@ -133,27 +92,29 @@
                            </a>
                        </li>
                        <li>
-                           <a href="{{ url('/admin/article/create') }}"><i class="material-icons-outlined">arrow_right</i>Add
-                               Article</a>
+                           <a href="{{ url('/admin/article/create') }}"><i
+                                   class="material-icons-outlined">arrow_right</i>Tambah
+                               Artikel</a>
                        </li>
                    </ul>
                </li>
 
                <li>
                    <a href="javascript:;" class="has-arrow">
-                       <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
+                       <div class="parent-icon" style="font-size: 35px"><i class="fadeIn animated bx bx-list-check"></i>
                        </div>
-                       <div class="menu-title">Category</div>
+                       <div class="menu-title">Kategori</div>
                    </a>
                    <ul>
-                       <li><a href="{{ url('/admin/category') }}"><i class="material-icons-outlined">arrow_right</i>Views</a>
+                       <li><a href="{{ url('/admin/category') }}"><i
+                                   class="material-icons-outlined">arrow_right</i>Views</a>
                        </li>
                        <li><a href="{{ url('/admin/category/create') }}"><i
-                                   class="material-icons-outlined">arrow_right</i>Add Category</a>
+                                   class="material-icons-outlined">arrow_right</i>Tambah Kategori</a>
                        </li>
                    </ul>
                </li>
-               <li>
+               {{-- <li>
                    <a class="has-arrow" href="javascript:;">
                        <div class="parent-icon"><i class="material-icons-outlined">card_giftcard</i>
                        </div>
@@ -461,7 +422,7 @@
                        </div>
                        <div class="menu-title">Support</div>
                    </a>
-               </li>
+               </li> --}}
            </ul>
            <!--end navigation-->
        </div>

@@ -87,7 +87,7 @@
                                 </th>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Type</th>
+                                <th>Gambar</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

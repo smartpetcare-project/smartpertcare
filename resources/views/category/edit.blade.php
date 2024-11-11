@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Tambah Kategori')
+@section('title', 'Edit Kategori')
 
 @push('css')
     <link href="{{ asset('build/plugins/fancy-file-uploader/fancy_fileupload.css') }}" rel="stylesheet">
@@ -87,25 +87,26 @@
 @endpush
 
 @section('content')
-    <x-page-title title="Kategori" subtitle="Tambah Kategori" />
+    <x-page-title title="Kategori" subtitle="Edit Kategori" />
     <div class="row">
         <div class="col-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <form id="categoryForm" enctype="multipart/form-data" method="POST"
-                        action="{{ route('category.store') }}">
+                        action="{{ route('category.update', $category['uuid']) }}">
                         @csrf
+                        @method('PUT')
                         <div class="mb-4">
                             <h5 class="mb-3">Nama Kategori</h5>
                             <input type="text" class="form-control" placeholder="Write title here..." name="name"
-                                required>
+                                required value="{{ $category['name'] }}">
                         </div>
                         <div class="mb-4">
                             <h5 class="mb-3">Tipe</h5>
                             <select name="type" class="form-select" required>
                                 <option value="">Pilih Tipe</option>
-                                <option value="product">Produk</option>
-                                <option value="article">Artikel</option>
+                                <option value="product" {{ $category['type'] == 'product' ? 'selected' : '' }}>Produk</option>
+                                <option value="article" {{ $category['type'] == 'article' ? 'selected' : '' }}>Artikel</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-outline-primary flex-fill">Publish</button>

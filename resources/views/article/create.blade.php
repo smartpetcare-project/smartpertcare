@@ -87,7 +87,7 @@
 @endpush
 
 @section('content')
-    <x-page-title title="Ecommerce" subtitle="Add Article" />
+    <x-page-title title="Artikel" subtitle="Tambah Artikel" />
     <form id="articleForm" enctype="multipart/form-data" method="POST" action="{{ route('article.store') }}">
         <div class="row">
             @csrf

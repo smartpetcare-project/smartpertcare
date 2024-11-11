@@ -29,7 +29,7 @@ class CategoryController extends Controller
         ]);
 
         if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
+            return redirect()->back()->withErrors($validate)->withInput()->with('error_message', $validate->errors()->all());
         }
 
         $category = Category::create([
@@ -38,7 +38,7 @@ class CategoryController extends Controller
             'type' => $request->type
         ]);
 
-        return redirect()->route('categories.index');        
+        return redirect()->route('category.index')->with('success', 'Category created successfully');
     }
 
     public function edit($uuid)
@@ -56,7 +56,7 @@ class CategoryController extends Controller
         ]);
 
         if ($validate->fails()) {
-            return redirect()->back()->withErrors($validate)->withInput();
+            return redirect()->back()->withErrors($validate)->withInput()->with('error_message', $validate->errors()->all());
         }
 
         $category = Category::where('uuid', $uuid)->firstOrFail();
@@ -66,7 +66,7 @@ class CategoryController extends Controller
             'type' => $request->type
         ]);
 
-        return redirect()->route('categories.index');
+        return redirect()->route('category.index')->with('success', 'Category updated successfully');
     }
 
     public function destroy($uuid)
@@ -74,6 +74,6 @@ class CategoryController extends Controller
         $category = Category::where('uuid', $uuid)->firstOrFail();
         $category->delete();
 
-        return redirect()->route('categories.index');
+        return redirect()->route('category.index')->with('success', 'Category deleted successfully');
     }
 }
