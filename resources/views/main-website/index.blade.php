@@ -9,7 +9,7 @@
                 <!-- Slide -->
                 <div class="slide">
                     <div class="image-layer"
-                        style="background-image: url('{{ URL::asset('build/main-website/images/slides/slide-v1-1.jpg') }}');">
+                        style="background-image: url('{{ URL::asset('main-website/images/slides/slide-v1-1.jpg') }}');">
                     </div>
 
                     <div class="auto-container">
@@ -27,7 +27,7 @@
                 <!-- Slide -->
                 <div class="slide">
                     <div class="image-layer"
-                        style="background-image: url({{ URL::asset('build/main-website/images/slides/slide-v1-2.jpg') }})">
+                        style="background-image: url({{ URL::asset('main-website/images/slides/slide-v1-2.jpg') }})">
                     </div>
                     <div class="auto-container">
                         <div class="content">
@@ -44,7 +44,7 @@
                 <!-- Slide -->
                 <div class="slide">
                     <div class="image-layer"
-                        style="background-image: url({{ URL::asset('build/main-website/images/slides/slide-v1-3.jpg') }})">
+                        style="background-image: url({{ URL::asset('main-website/images/slides/slide-v1-3.jpg') }})">
                     </div>
                     <div class="auto-container">
                         <div class="content">
@@ -125,10 +125,10 @@
                 <div class="col-xl-7">
                     <div class="about-style1-image-box">
                         <div class="about-style1-image-box-bg"
-                            style="background-image: url({{ URL::asset('build/main-website/images/shape/about-style1-image-box-bg.png') }})">
+                            style="background-image: url({{ URL::asset('main-website/images/shape/about-style1-image-box-bg.png') }})">
                         </div>
                         <div class="main-image">
-                            <img src="{{ URL::asset('build/main-website/images/about/about-1.png') }}" alt="Awesome Image">
+                            <img src="{{ URL::asset('main-website/images/about/about-1.png') }}" alt="Awesome Image">
                         </div>
                     </div>
                 </div>
@@ -211,10 +211,10 @@
     <!-- Start Service Style1 Area -->
     <section class="service-style1-area">
         <div class="shape1">
-            <img src="{{ URL::asset('build/main-website/images/shape/shape-1.png') }}" alt="">
+            <img src="{{ URL::asset('main-website/images/shape/shape-1.png') }}" alt="">
         </div>
         <div class="shape2">
-            <img src="{{ URL::asset('build/main-website/images/shape/shape-2.png') }}" alt="">
+            <img src="{{ URL::asset('main-website/images/shape/shape-2.png') }}" alt="">
         </div>
         <div class="container">
             <div class="sec-title text-center">
@@ -255,7 +255,7 @@
             <div class="row">
                 <div class="col-xl-6">
                     <div class="video-gallery-content-box text-center">
-                        <img src="{{ URL::asset('build/main-website/images/resources/video-gallery-image.png') }}"
+                        <img src="{{ URL::asset('main-website/images/resources/video-gallery-image.png') }}"
                             alt="">
                         <h2>Get Every Pet<br> Food & Toods Here.</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
@@ -270,7 +270,7 @@
 
                 <div class="col-xl-6">
                     <div class="video-holder-box text-center"
-                        style="background-image: url({{ URL::asset('build/main-website/images/resources/video-gallery-bg.jpg') }})">
+                        style="background-image: url({{ URL::asset('main-website/images/resources/video-gallery-bg.jpg') }})">
                         <div class="icon wow zoomIn" data-wow-delay="300ms" data-wow-duration="1500ms">
                             <a class="video-popup thm-bgclr" title="CarePress Video Gallery"
                                 href="https://www.youtube.com/watch?v=p25gICT63ek">
@@ -292,7 +292,7 @@
 
                 <div class="col-xl-6">
                     <div class="working-hours-box"
-                        style="background-image: url({{ URL::asset('build/main-website/images/resources/working-hours-box-bg.jpg') }})">
+                        style="background-image: url({{ URL::asset('main-website/images/resources/working-hours-box-bg.jpg') }})">
                         <div class="inner-content">
                             <div class="title">
                                 <h3>Working Hours<span></span></h3>
@@ -401,7 +401,7 @@
                             <div class="round-top"></div>
                             <div class="round-bottom"></div>
                             <div class="inner">
-                                <img src="{{ URL::asset('build/main-website/images/team/team-v1-1.png') }}"
+                                <img src="{{ URL::asset('main-website/images/team/team-v1-1.png') }}"
                                     alt="Awesome Image">
                                 <div class="overlay-style-one bg1"></div>
                             </div>
@@ -421,7 +421,7 @@
                             <div class="round-top"></div>
                             <div class="round-bottom"></div>
                             <div class="inner">
-                                <img src="{{ URL::asset('build/main-website/images/team/team-v1-2.png') }}"
+                                <img src="{{ URL::asset('main-website/images/team/team-v1-2.png') }}"
                                     alt="Awesome Image">
                                 <div class="overlay-style-one bg2"></div>
                             </div>
@@ -441,7 +441,7 @@
                             <div class="round-top"></div>
                             <div class="round-bottom"></div>
                             <div class="inner">
-                                <img src="{{ URL::asset('build/main-website/images/team/team-v1-3.png') }}"
+                                <img src="{{ URL::asset('main-website/images/team/team-v1-3.png') }}"
                                     alt="Awesome Image">
                                 <div class="overlay-style-one bg2"></div>
                             </div>
@@ -461,7 +461,7 @@
                             <div class="round-top"></div>
                             <div class="round-bottom"></div>
                             <div class="inner">
-                                <img src="{{ URL::asset('build/main-website/images/team/team-v1-4.png') }}"
+                                <img src="{{ URL::asset('main-website/images/team/team-v1-4.png') }}"
                                     alt="Awesome Image">
                                 <div class="overlay-style-one bg2"></div>
                             </div>
@@ -481,7 +481,7 @@
                             <div class="round-top"></div>
                             <div class="round-bottom"></div>
                             <div class="inner">
-                                <img src="{{ URL::asset('build/main-website/images/team/team-v1-4.png') }}"
+                                <img src="{{ URL::asset('main-website/images/team/team-v1-4.png') }}"
                                     alt="Awesome Image">
                                 <div class="overlay-style-one bg2"></div>
                             </div>
@@ -501,19 +501,19 @@
     <!--Start Testimonial style1 Area-->
     <section class="testimonial-style1-area">
         <div class="image-box1"><img
-                src="{{ URL::asset('build/main-website/images/testimonial/testimonial-image-1.png') }}" alt="">
+                src="{{ URL::asset('main-website/images/testimonial/testimonial-image-1.png') }}" alt="">
         </div>
         <div class="image-box2"><img
-                src="{{ URL::asset('build/main-website/images/testimonial/testimonial-image-2.png') }}" alt="">
+                src="{{ URL::asset('main-website/images/testimonial/testimonial-image-2.png') }}" alt="">
         </div>
         <div class="image-box3 paroller"><img
-                src="{{ URL::asset('build/main-website/images/testimonial/testimonial-image-3.png') }}" alt="">
+                src="{{ URL::asset('main-website/images/testimonial/testimonial-image-3.png') }}" alt="">
         </div>
         <div class="image-box4 paroller"><img
-                src="{{ URL::asset('build/main-website/images/testimonial/testimonial-image-4.png') }}" alt="">
+                src="{{ URL::asset('main-website/images/testimonial/testimonial-image-4.png') }}" alt="">
         </div>
         <div class="layer-outer"
-            style="background-image: url({{ URL::asset('build/main-website/images/resources/map.png') }})"></div>
+            style="background-image: url({{ URL::asset('main-website/images/resources/map.png') }})"></div>
         <div class="container">
             <div class="sec-title text-center">
                 <div class="icon">
@@ -528,7 +528,7 @@
                         <div class="single-testimonial-style1  wow fadeInUp" data-wow-delay="100ms"
                             data-wow-duration="1500ms">
                             <div class="img-holder">
-                                <img src="{{ URL::asset('build/main-website/images/testimonial/tes-v1-1.png') }}"
+                                <img src="{{ URL::asset('main-website/images/testimonial/tes-v1-1.png') }}"
                                     alt="Awesome Image">
                             </div>
                             <div class="text-holder">
@@ -546,7 +546,7 @@
                         <div class="single-testimonial-style1  wow fadeInUp" data-wow-delay="100ms"
                             data-wow-duration="1500ms">
                             <div class="img-holder">
-                                <img src="{{ URL::asset('build/main-website/images/testimonial/tes-v1-1.png') }}"
+                                <img src="{{ URL::asset('main-website/images/testimonial/tes-v1-1.png') }}"
                                     alt="Awesome Image">
                             </div>
                             <div class="text-holder">
@@ -610,7 +610,7 @@
                                     <h5>24th June 2020</h5>
                                 </div>
                                 <div class="inner">
-                                    <img src="{{ URL::asset('build/main-website/images/blog/blog-v1-3.jpg') }}"
+                                    <img src="{{ URL::asset('main-website/images/blog/blog-v1-3.jpg') }}"
                                         alt="Awesome Image">
                                 </div>
                             </div>
@@ -634,7 +634,7 @@
     <!--Start footer area-->
     <footer class="footer-area">
         <div class="footer-bg"
-            style="background-image: url({{ URL::asset('build/main-website/images/shape/footer-bg.png') }})"></div>
+            style="background-image: url({{ URL::asset('main-website/images/shape/footer-bg.png') }})"></div>
         <div class="footer">
             <div class="container">
                 <div class="row">
@@ -642,7 +642,7 @@
                         <div class="footer-logo">
                             <div class="logo">
                                 <a href="index.html"><img
-                                        src="{{ URL::asset('build/main-website/images/footer/footer-logo.png') }}"
+                                        src="{{ URL::asset('main-website/images/footer/footer-logo.png') }}"
                                         alt="Awesome Footer Logo" title="Logo"></a>
                             </div>
                             <div class="copy-right">

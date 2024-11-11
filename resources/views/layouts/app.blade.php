@@ -7,7 +7,7 @@
     <title>@yield('title') | Admin SmartPets Care</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ URL::asset('build/main-website/images/favicon/favicon-32x32.png') }}" type="image/png">
+    <link rel="icon" href="{{ URL::asset('main-website/images/favicon/favicon-32x32.png') }}" type="image/png">
 
     @include('layouts.head-css')
 </head>
@@ -29,6 +29,7 @@
     <div class="overlay btn-toggle"></div>
     <!--end overlay-->
 
+    @include('components.modals')
     @include('layouts.extra')
 
     @include('layouts.common-scripts')

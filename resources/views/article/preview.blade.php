@@ -37,7 +37,7 @@
                     <p class="mb-0">Kategori : {{ $article['category']['name'] }}</p>
                 </div>
                 <div class="overflow-auto">
-                    <div class="btn-group position-static">                        
+                    <div class="btn-group position-static">
                         <div class="btn-group position-static">
                             <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -45,14 +45,25 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <button
+                                    <button type="button"
                                         class="dropdown-item {{ $article['is_publish'] == 1 ? 'text-danger' : 'text-success' }}"
-                                        data-id="{{ $article['uuid'] }}"
-                                        onclick="changeStatus(this)">{{ $article['is_publish'] == 0 ? 'Publish' : 'Unpublish' }}</button>
+                                        onclick="setChangeStatusForm('article','{{ $article['uuid'] }}', {{ $article['is_publish'] }})">
+                                        {{ $article['is_publish'] == 0 ? 'Publish' : 'Unpublish' }}
+                                    </button>
                                 </li>
                                 <li>
-                                    <button class="dropdown-item text-danger" data-id="{{ $article['uuid'] }}"
-                                        onclick="deleteArticle(this)">Delete</button>
+                                    <button type="button" class="dropdown-item text-danger" data-bs-toggle="modal"
+                                        data-bs-target="#confirmDeleteModal"
+                                        onclick="setDeleteForm('article', '{{ $article['uuid'] }}')">
+                                        Delete
+                                    </button>
+
+                                    <form id="article-delete-form-{{ $article['uuid'] }}"
+                                        action="{{ route('article.destroy', $article['uuid']) }}" method="POST"
+                                        style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </li>
                             </ul>
                         </div>
@@ -84,26 +95,40 @@
                             <span class="ms-0">{{ $countRating }}</span>
                         </div>
                     </div>
-                    @php                        
-                        $contentParts = explode('</p>', $article['content'], 2);
+                    @php
+                        $imageContent = $article['image_content'];
+                        $firstImages = array_slice($imageContent, 0, 2);
+                        $lastImages = array_slice($imageContent, 2, 2);
+
+                        $contentParts = explode('</p>', $article['content']);
+                        $firstParagraph = $contentParts[0];
+                        $middleContent = implode('</p>', array_slice($contentParts, 1, count($contentParts) - 3));
+                        $lastParagraph = $contentParts[count($contentParts) - 2];
                     @endphp
 
                     <div class="mt-4">
-                        {!! $contentParts[0] !!}</p>
-                        
-                        @if (!empty($article['image_content']))
+                        {!! $firstParagraph !!}
+
+                        @if (!empty($firstImages))
                             <div class="image-gallery d-flex gap-2 mb-3 flex-wrap">
-                                @foreach ($article['image_content'] as $image)
+                                @foreach ($firstImages as $image)
                                     <img src="{{ $image }}" alt="{{ $article['title'] }}" class="img-thumbnail">
                                 @endforeach
                             </div>
                         @endif
 
-                        {!! $contentParts[1] ?? '' !!}
+                        {!! $middleContent !!}
+
+                        @if (!empty($lastImages))
+                            <div class="image-gallery d-flex gap-2 mb-3 flex-wrap">
+                                @foreach ($lastImages as $image)
+                                    <img src="{{ $image }}" alt="{{ $article['title'] }}" class="img-thumbnail">
+                                @endforeach
+                            </div>
+                        @endif
+
+                        {!! $lastParagraph !!}
                     </div>
-
-
-
 
                 </div>
             </div>
@@ -116,4 +141,8 @@
     <script src="{{ URL::asset('build/plugins/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ URL::asset('build/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ URL::asset('build/js/main.js') }}"></script>
+    <script>
+        const errorMessages = @json(session('error_messages', []));
+        const successMessage = @json(session('success', ''));
+    </script>
 @endpush

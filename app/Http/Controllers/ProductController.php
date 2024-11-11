@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -72,6 +73,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $validate = Validator::make($request->all(), [
             'name' => 'required|string',
             'description' => 'required|string',
@@ -83,8 +85,8 @@ class ProductController extends Controller
             'is_publish' => 'required|boolean',
         ]);
 
-        if ($validate->fails()) {
-            return response()->json(['success' => false, 'message' => $validate->errors()->first()], 400);
+        if ($validate->fails()) {            
+            return redirect()->back()->withErrors($validate)->withInput()->with('error_messages', $validate->errors()->all());                        
         }
 
         $imagePreviewPath = $request->file('image_preview')->store('product', 'public');        
@@ -109,17 +111,87 @@ class ProductController extends Controller
             'image_content' => json_encode($contentImages),
         ]);
 
-        return response()->json(['success' => true, 'message' => 'Product saved successfully']);
+        return redirect()->route('product.index')->with('success', 'Product saved successfully');        
     }
 
+    public function show($uuid)
+    {
+        $product = Product::where('uuid', $uuid)->with(['category', 'ratings'])->firstOrFail()->toArray();
+
+        $product['image_preview'] = asset('storage/' . $product['image_preview']);
+        $product['image_header'] = asset('storage/' . $product['image_header']);
+        $product['image_content'] = json_decode($product['image_content']);
+        $product['image_content'] = array_map(function ($image) {
+            return asset('storage/' . $image);
+        }, $product['image_content']);
+
+        $product['category_name'] = $product['category']['name'] ?? 'No Category';
+
+        $product['created_at'] = Carbon::parse($product['created_at'])->format('d M Y, H:i');
+        $product['updated_at'] = Carbon::parse($product['updated_at'])->format('d M Y, H:i');
+
+        $ratings = $product['ratings'];
+        $averageRating = !empty($ratings) ? number_format(array_sum(array_column($ratings, 'rating')) / count($ratings), 1) : '0.0';
+        $product['average_rating'] = $averageRating;
+        
+        $countRating = count($ratings);
+        // dd($product, $countRating);
+        return view('product.show', compact('product', 'countRating'));
+    }
+
+    public function preview($uuid)
+    {
+        $product = Product::where('uuid', $uuid)->with(['category', 'ratings'])->firstOrFail()->toArray();
+
+        $product['image_preview'] = asset('storage/' . $product['image_preview']);
+        $product['image_header'] = asset('storage/' . $product['image_header']);
+        $product['image_content'] = json_decode($product['image_content']);
+        $product['image_content'] = array_map(function ($image) {
+            return asset('storage/' . $image);
+        }, $product['image_content']);
+
+        $product['category_name'] = $product['category']['name'] ?? 'No Category';
+
+        $product['created_at'] = Carbon::parse($product['created_at'])->format('d M Y, H:i');
+        $product['updated_at'] = Carbon::parse($product['updated_at'])->format('d M Y, H:i');
+
+        $ratings = $product['ratings'];
+        $averageRating = !empty($ratings) ? number_format(array_sum(array_column($ratings, 'rating')) / count($ratings), 1) : '0.0';
+        $product['average_rating'] = $averageRating;
+
+        return view('product.preview', compact('product'));
+    }
+
+    public function changeStatus($uuid)
+    {
+        $product = Product::where('uuid', $uuid)->firstOrFail();
+        $product->update(['is_publish' => !$product->is_publish]);
+
+        return redirect()->back()->with('success', 'Product status changed successfully');        
+    }
 
     public function edit($uuid)
     {
-        $product = Product::where('uuid', $uuid)->with('category')->firstOrFail();
-        $category = Category::all()->toArray();
+        $product = Product::where('uuid', $uuid)->first();
 
-        dd($product, $category);
-        return view('product.update', compact('product', 'category'));
+        if (!$product) {
+            return redirect()->route('product.index')->with('error', 'Product not found');
+        }
+
+        $product->description = html_entity_decode($product->description);
+
+        $product->image_preview = asset('storage/' . $product->image_preview);
+        $product->image_header = asset('storage/' . $product->image_header);
+        $product->image_content = json_decode($product->image_content);
+        $product->image_content = array_map(function ($image) {
+            return asset('storage/' . $image);
+        }, $product->image_content);
+
+        $product->price = number_format($product->price, 0, ',', '.');
+
+        $category = Category::where('type', 'product')->get();
+
+        return view('product.edit', compact('product', 'category'));
     }
 
     public function update(Request $request, $uuid)
@@ -136,7 +208,7 @@ class ProductController extends Controller
         ]);
 
         if ($validate->fails()) {
-            return response()->json(['success' => false, 'message' => $validate->errors()->first()], 400);
+            return redirect()->back()->withErrors($validate)->withInput()->with('error_messages', $validate->errors()->all());
         }
 
         $product = Product::where('uuid', $uuid)->firstOrFail();
@@ -169,30 +241,23 @@ class ProductController extends Controller
             'image_content' => json_encode($contentImages),
         ]);
 
-        return response()->json(['success' => true, 'message' => 'Product updated successfully']);
+        return redirect()->route('product.index')->with('success', 'Product updated successfully');
     }
 
-    public function destroy($uuid)
+    public function destroy($id)
     {
-        $product = Product::where('uuid', $uuid)->firstOrFail();
+        $product = Product::where('uuid', $id)->firstOrFail();
+        
+        Storage::disk('public')->delete($product->image_preview);
+        Storage::disk('public')->delete($product->image_header);
+        $contentImages = json_decode($product->image_content);
+        foreach ($contentImages as $contentImage) {
+            Storage::disk('public')->delete($contentImage);
+        }
+
+        $product->ratings()->delete();
         $product->delete();
 
-        return response()->json(['success' => true, 'message' => 'Product deleted successfully']);
-    }
-
-    public function publish($uuid)
-    {
-        $product = Product::where('uuid', $uuid)->firstOrFail();
-        $product->update(['is_publish' => 1]);
-
-        return response()->json(['success' => true, 'message' => 'Product published successfully']);
-    }
-
-    public function unpublish($uuid)
-    {
-        $product = Product::where('uuid', $uuid)->firstOrFail();
-        $product->update(['is_publish' => 0]);
-
-        return response()->json(['success' => true, 'message' => 'Product unpublished successfully']);
+        return redirect()->route('product.index')->with('success', 'Product deleted successfully');        
     }
 }

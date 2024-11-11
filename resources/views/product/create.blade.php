@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Add Product')
+@section('title', 'Tambah Produk')
 
 @push('css')
     <link href="{{ asset('build/plugins/fancy-file-uploader/fancy_fileupload.css') }}" rel="stylesheet">
@@ -87,30 +87,30 @@
 @endpush
 
 @section('content')
-    <x-page-title title="Ecommerce" subtitle="Add Product" />
-    <div class="row">
-        <div class="col-12 col-lg-8">
-            <div class="card">
-                <div class="card-body">
-                    <form id="productForm" enctype="multipart/form-data">
+    <x-page-title title="Produk" subtitle="Tambah Produk" />
+    <form id="productForm" enctype="multipart/form-data" method="POST" action="{{ route('product.store') }}">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="card">
+                    <div class="card-body">
                         @csrf
                         <div class="mb-4">
-                            <h5 class="mb-3">Product Title</h5>
+                            <h5 class="mb-3">Nama Produk</h5>
                             <input type="text" class="form-control" placeholder="Write title here..." name="name"
                                 required>
                         </div>
                         <div class="mb-4">
-                            <h5 class="mb-3">Product Description</h5>
-                            <textarea class="form-control" id="description" name="description" required></textarea>
+                            <h5 class="mb-3">Deskripsi Produk</h5>
+                            <textarea class="form-control" id="description" name="description"></textarea>
                         </div>
                         <div class="mb-4">
-                            <h5 class="mb-3">Product Price</h5>
-                            <input type="text" class="form-control" placeholder="100.000"
-                                id="formatted_price" required oninput="formatPrice(this)">
+                            <h5 class="mb-3">Harga Produk</h5>
+                            <input type="text" class="form-control" placeholder="100.000" id="formatted_price" required
+                                oninput="formatPrice(this)">
                             <input type="hidden" name="price" id="price">
                         </div>
                         <div class="mb-4">
-                            <h5 class="mb-3">Category</h5>
+                            <h5 class="mb-3">Kategori</h5>
                             <select name="category_id" class="form-select" required>
                                 <option value="">Select Category</option>
                                 @foreach ($category as $item)
@@ -141,25 +141,24 @@
                             </div>
                             <div id="filePreview" class="file-preview"></div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex align-items-center gap-3">
-                        <button type="button" class="btn btn-outline-danger flex-fill"
-                            onclick="resetForm()">Discard</button>
-                        <button type="button" class="btn btn-outline-success flex-fill" onclick="submitForm(0)">Save
-                            Draft</button>
-                        <button type="button" class="btn btn-outline-primary flex-fill"
-                            onclick="submitForm(1)">Publish</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </div><!--end row-->
+            <div class="col-12 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center gap-3">
+                            <button type="reset" class="btn btn-outline-danger flex-fill">Discard</button>
+                            <button type="submit" class="btn btn-outline-success flex-fill" name="is_publish"
+                                value="0">Save Draft</button>
+                            <button type="submit" class="btn btn-outline-primary flex-fill" name="is_publish"
+                                value="1">Publish</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+    </form>
 @endsection
 
 @push('script')
@@ -176,6 +175,8 @@
             height: 300,
             skin: 'oxide-dark',
             content_css: 'dark',
+            plugins: 'lists',
+            toolbar: 'undo redo | formatselect | bold italic | bullist numlist | alignleft aligncenter alignright alignjustify | outdent indent',
             setup: function(editor) {
                 editor.on('init', function() {
                     editor.getBody().style.backgroundColor = '#1b2430';
@@ -183,110 +184,15 @@
                 });
             },
         });
-
-        let currentImageCount = 0;
-        const maxImages = 4;
-
-        // Function to handle single image previews for image_preview, image_banner, and image_header
-        function previewImage(input, previewId) {
-            const previewContainer = document.getElementById(previewId);
-            const file = input.files[0];
-
-            if (file) {
-                previewContainer.innerHTML = ''; // Clear previous image
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    previewContainer.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Function to handle multiple image previews for content images
-        // Function to handle multiple image previews for content images
-        function previewImages(input) {
-            const previewContainer = document.getElementById('filePreview');
-            const files = input.files;
-
-            if (currentImageCount + files.length > maxImages) {
-                alert(`You can upload a maximum of ${maxImages} images.`);
-                return;
-            }
-
-            Array.from(files).forEach(file => {
-                if (currentImageCount < maxImages) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        // Create image wrapper with delete button
-                        const imageWrapper = document.createElement('div');
-                        imageWrapper.classList.add('image-wrapper');
-
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        imageWrapper.appendChild(img);
-
-                        // Create delete button
-                        const deleteButton = document.createElement('span');
-                        deleteButton.innerHTML = '✕';
-                        deleteButton.classList.add('delete-button');
-                        deleteButton.addEventListener('click', () => {
-                            previewContainer.removeChild(imageWrapper);
-                            currentImageCount--;
-                            input.disabled = false; // Enable input if limit not reached
-                        });
-                        imageWrapper.appendChild(deleteButton);
-
-                        previewContainer.appendChild(imageWrapper);
-                        currentImageCount++;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-
-            // Disable input if max limit reached
-            if (currentImageCount >= maxImages) {
-                input.disabled = true;
-            }
-        }
-
-
-        function submitForm(is_publish) {
-            tinyMCE.triggerSave();
-            const formData = new FormData($('#productForm')[0]);
-            formData.append('is_publish', is_publish);
-
-            $.ajax({
-                url: "{{ route('products.store') }}",
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    alert(response.message);
-                    if (response.success && is_publish) {
-                        window.location.href = "{{ route('products.index') }}";
-                    }
-                },
-                error: function(response) {
-                    alert('Failed to save product.');
-                }
-            });
-        }
-
-        function resetForm() {
-            $('#productForm')[0].reset();
-            tinyMCE.get('description').setContent('');
-            document.querySelectorAll('.file-preview').forEach(container => container.innerHTML = '');
-            currentImageCount = 0;
-            document.querySelectorAll('.input-file').forEach(input => input.disabled = false);
-        }
-
-        function formatPrice(input) {            
-            let value = input.value.replace(/\D/g, '');
-            input.value = new Intl.NumberFormat('id-ID').format(value);            
-            document.getElementById('price').value = value;
-        }
+    </script>
+    <script>
+        const errorMessages = @json(session('error_messages', []));
+        const successMessage = @json(session('success', ''));
+    </script>
+    <script>
+        document.getElementById('productForm').addEventListener('submit', function(event) {
+            var content = tinymce.get('content').getContent();
+            document.getElementById('content').value = content;
+        });
     </script>
 @endpush

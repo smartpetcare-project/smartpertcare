@@ -11,11 +11,6 @@ class Article extends Model
 
     protected $table = 'tbl_article';
 
-    protected $hidden = [
-        'id',
-        'category_id',
-    ];
-
     protected $fillable = [
         'uuid',
         'title',

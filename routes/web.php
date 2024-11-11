@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -13,39 +14,34 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/landing', [HomeController::class, 'index'])->name('home');
+Route::get('/service', [HomeController::class, 'service'])->name('service');
+Route::get('service/{uuid}', [HomeController::class, 'serviceDetail'])->name('service.detail');
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
+    
+    Route::resource('product', ProductController::class);
     Route::prefix('product')->group(function () {
-        Route::get('/', [ProductController::class, 'index'])->name('products.index');
-        Route::get('/create', [ProductController::class, 'create'])->name('products.create');
-        Route::post('/', [ProductController::class, 'store'])->name('products.store');
+        Route::get('preview/{uuid}', [ProductController::class, 'preview'])->name('product.preview');
+        Route::post('change-status/{uuid}', [ProductController::class, 'changeStatus'])->name('product.change-status');
     });
 
-    Route::prefix('article')->group(function () {
-        Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
-        Route::get('/create', [ArticleController::class, 'create'])->name('articles.create');
-        Route::post('/store', [ArticleController::class, 'store'])->name('articles.store');
-        Route::get('/{id}', [ArticleController::class, 'show'])->name('articles.show');
-        Route::post('/change-status/{id}', [ArticleController::class, 'changeStatus'])->name('articles.change-status');
-        Route::delete('delete/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
-        Route::get('/preview/{id}', [ArticleController::class, 'preview'])->name('articles.preview');
+    Route::resource('article', ArticleController::class);
+    Route::prefix('article')->group(function () {        
+        Route::post('/change-status/{uuid}', [ArticleController::class, 'changeStatus'])->name('article.change-status');
+        Route::get('/preview/{uuid}', [ArticleController::class, 'preview'])->name('article.preview');
     });
+    
+    Route::resource('category', CategoryController::class);
 
-    Route::prefix('category')->group(function () {
-        Route::get('/', [CategoryController::class, 'index'])->name('categories.index');
-        Route::get('/create', [CategoryController::class, 'create'])->name('categories.create');
-        Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
-    });
+    Route::resource('banner', BannerController::class);            
 });
 
 Route::prefix('rating')->group(function () {
     Route::get('/', [RatingController::class, 'index'])->name('ratings.index');
     Route::post('/', [RatingController::class, 'store'])->name('ratings.store');
 });
-Route::post('/upload-image', [ImageUploadController::class, 'store'])->name('upload.image');
 
 
-Route::get('{any}', [HomeController::class, 'root'])->where('any', '.*');
+Route::get('{any}', [DashboardController::class, 'root'])->where('any', '.*');

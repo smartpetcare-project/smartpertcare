@@ -21,10 +21,12 @@
                 <div class="overflow-auto">
                     <div class="btn-group position-static">
                         <div class="btn-group position-static">
-                            <button type="button" class="btn btn-outline-primary align-items-center" data-id="{{ $article['uuid'] }}" onclick="urlPreview(this)">
-                                <i class="fadeIn animated bx bx-show-alt"></i>
-                                Preview
-                            </button>
+                            <form action="{{ route('article.preview', ['uuid' => $article['uuid']]) }}" method="get">
+                                <button type="submit" class="btn btn-outline-primary align-items-center">
+                                    <i class="fadeIn animated bx bx-show-alt"></i>
+                                    Preview
+                                </button>
+                            </form>
                         </div>
                         <div class="btn-group position-static">
                             <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
@@ -33,14 +35,25 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <button
+                                    <button type="button"
                                         class="dropdown-item {{ $article['is_publish'] == 1 ? 'text-danger' : 'text-success' }}"
-                                        data-id="{{ $article['uuid'] }}"
-                                        onclick="changeStatus(this)">{{ $article['is_publish'] == 0 ? 'Publish' : 'Unpublish' }}</button>
+                                        onclick="setChangeStatusForm('article','{{ $article['uuid'] }}', {{ $article['is_publish'] }})">
+                                        {{ $article['is_publish'] == 0 ? 'Publish' : 'Unpublish' }}
+                                    </button>
                                 </li>
                                 <li>
-                                    <button class="dropdown-item text-danger" data-id="{{ $article['uuid'] }}"
-                                        onclick="deleteArticle(this)">Delete</button>
+                                    <button type="button" class="dropdown-item text-danger" data-bs-toggle="modal"
+                                        data-bs-target="#confirmDeleteModal"
+                                        onclick="setDeleteForm('article', '{{ $article['uuid'] }}')">
+                                        Delete
+                                    </button>
+
+                                    <form id="article-delete-form-{{ $article['uuid'] }}"
+                                        action="{{ route('article.destroy', $article['uuid']) }}" method="POST"
+                                        style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </li>
                             </ul>
                         </div>
@@ -51,7 +64,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12 col-lg-8 d-flex">
+        <div class="col-12 d-flex">
             <div class="card w-100">
                 <div class="card-body">
                     <h5 class="mb-3 fw-bold">Ratings<span class="fw-light ms-2">({{ $countRating }})</span></h5>
@@ -66,7 +79,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(empty($article['ratings']))
+                                    @if (empty($article['ratings']))
                                         <tr>
                                             <td colspan="3" class="text-center">Belum ada rating yang diberikan</td>
                                         </tr>
@@ -101,42 +114,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-lg-4 d-flex">
-            <div class="w-100">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4 fw-bold">Summary</h4>
-                        <div>
-                            <div class="d-flex justify-content-between">
-                                <p class="fw-semi-bold">Items subtotal :</p>
-                                <p class="fw-semi-bold">$891</p>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p class="fw-semi-bold">Discount :</p>
-                                <p class="text-danger fw-semi-bold">-$48</p>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p class="fw-semi-bold">Tax :</p>
-                                <p class="fw-semi-bold">$156.70</p>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p class="fw-semi-bold">Subtotal :</p>
-                                <p class="fw-semi-bold">$756</p>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p class="fw-semi-bold">Shipping Cost :</p>
-                                <p class="fw-semi-bold">$50</p>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between border-top pt-4">
-                            <h5 class="mb-0 fw-bold">Total :</h5>
-                            <h5 class="mb-0 fw-bold">$925.44</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>        
     </div><!--end row-->
 @endsection
 @push('script')

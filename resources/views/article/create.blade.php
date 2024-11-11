@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Add Article')
+@section('title', 'Tambah Artikel')
 
 @push('css')
-    <link href="{{ asset('build/plugins/fancy-file-uploader/fancy_fileupload.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/plugins/fancy-file-uploader/fancy_fileupload.css') }}" rel="stylesheet">    
     <style>
         .file-upload-wrapper {
             border: 2px dashed #555;
@@ -88,12 +88,12 @@
 
 @section('content')
     <x-page-title title="Ecommerce" subtitle="Add Article" />
-    <div class="row">
-        <div class="col-12 col-lg-8">
-            <div class="card">
-                <div class="card-body">
-                    <form id="articleForm" enctype="multipart/form-data">
-                        @csrf
+    <form id="articleForm" enctype="multipart/form-data" method="POST" action="{{ route('article.store') }}">
+        <div class="row">
+            @csrf
+            <div class="col-12 col-lg-8">
+                <div class="card">
+                    <div class="card-body">
                         <div class="mb-4">
                             <h5 class="mb-3">Judul Artikel</h5>
                             <input type="text" class="form-control" placeholder="Write title here..." name="title"
@@ -122,7 +122,7 @@
                         @endforeach
                         <div class="mb-4">
                             <h5 class="mb-3">Content</h5>
-                            <textarea class="form-control" id="content" name="content" required></textarea>
+                            <textarea class="form-control" id="content" name="content"></textarea>
                         </div>
                         <div class="mb-4">
                             <h5 class="mb-3">Content Images (Add up to 4 images)</h5>
@@ -133,32 +133,33 @@
                             </div>
                             <div id="filePreview" class="file-preview"></div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex align-items-center gap-3">
-                        <button type="button" class="btn btn-outline-danger flex-fill"
-                            onclick="resetForm()">Discard</button>
-                        <button type="button" class="btn btn-outline-success flex-fill" onclick="submitForm(0)">Save
-                            Draft</button>
-                        <button type="button" class="btn btn-outline-primary flex-fill"
-                            onclick="submitForm(1)">Publish</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </div><!--end row-->
+
+            <div class="col-12 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center gap-3">
+                            <button type="reset" class="btn btn-outline-danger flex-fill">Discard</button>
+                            <button type="submit" class="btn btn-outline-success flex-fill" name="is_publish"
+                                value="0">Save Draft</button>
+                            <button type="submit" class="btn btn-outline-primary flex-fill" name="is_publish"
+                                value="1">Publish</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+    </form>
+
 @endsection
 
 @push('script')
     <script src="{{ URL::asset('build/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
     <script src="{{ URL::asset('build/plugins/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ URL::asset('build/plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <script src="{{ URL::asset('build/js/main.js') }}"></script>
+    <script src="{{ URL::asset('build/js/main.js') }}"></script>    
     {{-- <script src="{{ URL::asset('build/js/jquery.min.js') }}"></script> --}}
     <script src="https://cdn.tiny.cloud/1/aas4k1l6713vn5p9u83xj1ehtiegj6b1pfoc3rgtlmdwyi4o/tinymce/7/tinymce.min.js"
         referrerpolicy="origin"></script>
@@ -177,111 +178,17 @@
                 });
             },
         });
+    </script>
 
+    <script>
+        const errorMessages = @json(session('error_messages', []));
+        const successMessage = @json(session('success', ''));
+    </script>
 
-        let currentImageCount = 0;
-        const maxImages = 4;
-
-        // Function to handle single image previews for image_preview, image_banner, and image_header
-        function previewImage(input, previewId) {
-            const previewContainer = document.getElementById(previewId);
-            const file = input.files[0];
-
-            if (file) {
-                previewContainer.innerHTML = ''; // Clear previous image
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    previewContainer.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Function to handle multiple image previews for content images
-        // Function to handle multiple image previews for content images
-        function previewImages(input) {
-            const previewContainer = document.getElementById('filePreview');
-            const files = input.files;
-
-            if (currentImageCount + files.length > maxImages) {
-                alert(`You can upload a maximum of ${maxImages} images.`);
-                return;
-            }
-
-            Array.from(files).forEach(file => {
-                if (currentImageCount < maxImages) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        // Create image wrapper with delete button
-                        const imageWrapper = document.createElement('div');
-                        imageWrapper.classList.add('image-wrapper');
-
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        imageWrapper.appendChild(img);
-
-                        // Create delete button
-                        const deleteButton = document.createElement('span');
-                        deleteButton.innerHTML = '✕';
-                        deleteButton.classList.add('delete-button');
-                        deleteButton.addEventListener('click', () => {
-                            previewContainer.removeChild(imageWrapper);
-                            currentImageCount--;
-                            input.disabled = false; // Enable input if limit not reached
-                        });
-                        imageWrapper.appendChild(deleteButton);
-
-                        previewContainer.appendChild(imageWrapper);
-                        currentImageCount++;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-
-            // Disable input if max limit reached
-            if (currentImageCount >= maxImages) {
-                input.disabled = true;
-            }
-        }
-
-
-        function submitForm(is_publish) {
-            tinyMCE.triggerSave();
-            const formData = new FormData($('#articleForm')[0]);
-            formData.append('is_publish', is_publish);
-            console.log(formData);
-            $.ajax({
-                url: "{{ route('articles.store') }}",
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    alert(response.message);
-                    if (response.success && is_publish) {
-                        window.location.href = "{{ route('articles.index') }}";
-                    }
-                },
-                error: function(response) {
-                    alert('Failed to save Article.');
-                }
-            });
-        }
-
-        function resetForm() {
-            $('#articleForm')[0].reset();
-            tinyMCE.get('content').setContent('');
-            document.querySelectorAll('.file-preview').forEach(container => container.innerHTML = '');
-            currentImageCount = 0;
-            document.querySelectorAll('.input-file').forEach(input => input.disabled = false);
-        }
-
-        function formatPrice(input) {
-            let value = input.value.replace(/\D/g, '');
-            input.value = new Intl.NumberFormat('id-ID').format(value);
-            document.getElementById('price').value = value;
-        }
+    <script>
+        document.getElementById('articleForm').addEventListener('submit', function(event) {
+            var content = tinymce.get('content').getContent();
+            document.getElementById('content').value = content;
+        });
     </script>
 @endpush

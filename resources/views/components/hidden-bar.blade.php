@@ -5,7 +5,7 @@
     <div class="hidden-bar-wrapper">
         <div class="logo">
             <a href="index.html"><img
-                    src="{{ URL::asset('build/main-website/images/resources/hidden-bar-logo.png') }}"
+                    src="{{ URL::asset('main-website/images/resources/hidden-bar-logo.png') }}"
                     alt="Logo" /></a>
         </div>
         <div class="hiddenbar-about-us">

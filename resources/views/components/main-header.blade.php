@@ -1,50 +1,44 @@
-<header class="main-header header-style-one">
-    <!--Start Header Top-->
-    <div class="header-top">
+<header class="main-header header-style-two">
+   
+    <!--Start Header Top--> 
+    <div class="header-top style2">
         <div class="outer-container">
             <div class="outer-box clearfix">
-
+               
                 <div class="header-top-left pull-left">
                     <div class="header-contact-info">
                         <ul>
-                            <li><span class="icon-envelope"></span><a
-                                    href="mailto:smartpetscareofficial@gmail.com">smartpetscareofficial@gmail.com</a>
-                            </li>
-                            <li><span class="icon-phone-call"></span><a
-                                    href="https://api.whatsapp.com/send?phone=6285212622615">+62 8521-2622-615</a>
-                            </li>
+                            <li><span class="icon-envelope"></span><a href="mailto:smartpetscareofficial@gmail.com">smartpetscareofficial@gmail.com</a></li>
+                            <li><span class="icon-phone-call"></span><a href="https://api.whatsapp.com/send?phone=6285212622615">+62 8521-2622-615</a></li>
                         </ul>
                     </div>
                 </div>
-
+                
                 <div class="header-top-right pull-right">
                     <div class="header-social-link">
                         <ul>
                             <li>
-                                <a href="https://instagram.com/smartpetscare.official/"><i class="fa fa-instagram"
-                                        aria-hidden="true"></i></a>
+                                <a href="https://instagram.com/smartpetscare.official/"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
                             </li>
                         </ul>
-                    </div>
-                </div>
-
+                    </div>      
+                </div> 
+                  
             </div>
-        </div>
-    </div>
+        </div>    
+    </div> 
     <!--End header Top-->
 
-    <div class="header">
+    <div class="header style2">
         <div class="outer-container">
             <div class="outer-box clearfix">
                 <!--Start Header Left-->
                 <div class="header-left clearfix pull-left">
-
+                   
                     <div class="logo">
-                        <a href="index.html"><img
-                                src="{{ URL::asset('build/main-website/images/resources/logo.png') }}"
-                                alt="Awesome Logo" title=""></a>
+                        <a href="index.html"><img src="{{ URL::asset('main-website/images/resources/logo.png') }}" alt="Awesome Logo" title=""></a>
                     </div>
-
+                    
                     <div class="nav-outer clearfix">
                         <!--Mobile Navigation Toggler-->
                         <div class="mobile-nav-toggler">
@@ -58,19 +52,21 @@
                         <nav class="main-menu style1 navbar-expand-md navbar-light">
                             <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="about.html">Tentang</a></li>
+                                    <li><a href="/landing">Home</a></li>
+                                    <li><a href="/about">Tentang</a></li>
                                     <li class="dropdown"><a href="#">Layanan</a>
                                         <ul>
-                                            <li><a href="services.html">View All Services</a></li>
-                                            <li><a href="ser-pet-grooming.html">Pet Grooming</a></li>
-                                            <li><a href="ser-dog-setting.html">Dog Setting</a></li>
-                                            <li><a href="ser-healthy-meals.html">Healthy Meals</a></li>
-                                            <li><a href="ser-veterinary-service.html">Veterinary Service</a></li>
+                                            <li><a href="/service">View All Services</a></li>
+                                            @php
+                                                $products = \App\Models\Product::all();
+                                            @endphp
+                                            @foreach ($products as $item)
+                                                <li><a href="{{ route('service.detail', $item->uuid) }}">{{ $item->name }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li class="dropdown"><a href="#">Halaman</a>
-                                        <ul>
+                                    	<ul>
                                             <li><a href="shop-details.html">Produk Kami</a></li>
                                             <li><a href="team.html">Team Smartpetscare</a></li>
                                             <li><a href="faq.html">Faq</a></li>
@@ -80,13 +76,13 @@
                                     <li><a href="contact.html">Kontak</a></li>
                                 </ul>
                             </div>
-                        </nav>
+                        </nav>                        
                         <!-- Main Menu End-->
                     </div>
-
+                    
                 </div>
                 <!--End Header Left-->
-
+                
                 <!--Start Header Right-->
                 <div class="header-right pull-right clearfix">
                     <div class="hidden-content-button bar-box">
@@ -110,44 +106,39 @@
                     </div>
                 </div>
                 <!--End Header Right-->
-            </div>
+            </div>  
         </div>
     </div>
     <!--End header -->
-
+    
     <!--Sticky Header-->
     <div class="sticky-header">
         <div class="container">
             <div class="clearfix">
                 <!--Logo-->
                 <div class="logo float-left">
-                    <a href="index.html" class="img-responsive"><img
-                            src="{{ URL::asset('build/main-website/images/resources/sticky-logo.png') }}"
-                            alt="" title=""></a>
+                    <a href="index.html" class="img-responsive"><img src="{{ URL::asset('main-website/images/resources/sticky-logo.png') }}" alt="" title=""></a>
                 </div>
                 <!--Right Col-->
                 <div class="right-col float-right">
                     <!-- Main Menu -->
                     <nav class="main-menu clearfix">
-                        <!--Keep This Empty / Menu will come through Javascript-->
-                    </nav>
+                    <!--Keep This Empty / Menu will come through Javascript-->
+                    </nav>   
                 </div>
             </div>
         </div>
     </div>
     <!--End Sticky Header-->
-
+    
     <!-- Mobile Menu  -->
     <div class="mobile-menu">
         <div class="menu-backdrop"></div>
         <div class="close-btn"><span class="icon flaticon-multiply"></span></div>
 
         <nav class="menu-box">
-            <div class="nav-logo"><a href="index.html"><img
-                        src="{{ URL::asset('build/main-website/images/resources/mobilemenu-logo.png') }}"
-                        alt="" title=""></a></div>
-            <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
-            </div>
+            <div class="nav-logo"><a href="index.html"><img src="{{ URL::asset('main-website/images/resources/mobilemenu-logo.png') }}" alt="" title=""></a></div>
+            <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
             <!--Social Links-->
             <div class="social-links">
                 <ul class="clearfix">
@@ -160,5 +151,5 @@
             </div>
         </nav>
     </div>
-    <!-- End Mobile Menu -->
+    <!-- End Mobile Menu --> 
 </header>

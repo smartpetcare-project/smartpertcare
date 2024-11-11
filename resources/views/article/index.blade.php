@@ -3,7 +3,7 @@
     Article
 @endsection
 @section('content')
-    <x-page-title title="eCommerce" subtitle="Article" />
+    <x-page-title title="Artikel" subtitle="Views" />
 
     <div class="product-count d-flex align-items-center gap-3 gap-lg-4 mb-4 fw-medium flex-wrap font-text1">
         <a href="javascript:;"><span class="me-1">All</span><span class="text-secondary">({{ $countAllArticle }})</span></a>
@@ -70,7 +70,9 @@
         <div class="col-auto">
             <div class="d-flex align-items-center gap-2 justify-content-lg-end">
                 <button class="btn btn-filter px-4"><i class="bi bi-box-arrow-right me-2"></i>Export</button>
-                <button class="btn btn-primary px-4" onclick="{{ route('articles.create') }}"><i class="bi bi-plus-lg me-2"></i>Add Product</button>
+                <button class="btn btn-primary px-4" onclick="window.location.href='{{ route('article.create') }}'">
+                    <i class="bi bi-plus-lg me-2"></i>Tambah Artikel
+                </button>
             </div>
         </div>
     </div><!--end row-->
@@ -85,9 +87,9 @@
                                 <th>
                                     <input class="form-check-input" type="checkbox">
                                 </th>
-                                <th>Judul Artikel</th>                                
-                                <th>Kategori</th>                                
-                                <th>Rating</th>                                
+                                <th>Judul Artikel</th>
+                                <th>Kategori</th>
+                                <th>Rating</th>
                                 <th>Date</th>
                                 <th>Action</th>
                             </tr>
@@ -105,17 +107,19 @@
                                                     alt="">
                                             </div>
                                             <div class="product-info">
-                                                <a href="/article/{{ $item['uuid'] }}" class="product-title">{{ $item['title'] }}</a>
+                                                <a href="/admin/article/{{ $item['uuid'] }}"
+                                                    class="product-title">{{ $item['title'] }}</a>
                                                 <p class="mb-0 product-category">Category : {{ $item['category_name'] }}</p>
                                             </div>
                                         </div>
-                                    </td>                                    
-                                    <td>{{ $item['category_name'] }}</td>                                    
+                                    </td>
+                                    <td>{{ $item['category_name'] }}</td>
                                     <td>
                                         <div class="product-rating">
-                                            <i class="bi bi-star-fill text-warning me-2"></i><span>{{ $item['average_rating'] }}</span>
+                                            <i
+                                                class="bi bi-star-fill text-warning me-2"></i><span>{{ $item['average_rating'] }}</span>
                                         </div>
-                                    </td>                                    
+                                    </td>
                                     <td>
                                         {{ $item['updated_at'] }}
                                     </td>
@@ -127,15 +131,29 @@
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <button
+                                                    <button type="button"
                                                         class="dropdown-item {{ $item['is_publish'] == 1 ? 'text-danger' : 'text-success' }}"
-                                                        data-id="{{ $item['uuid'] }}"
-                                                        onclick="changeStatus(this)">{{ $item['is_publish'] == 0 ? 'Publish' : 'Unpublish' }}</button>
+                                                        onclick="setChangeStatusForm('article','{{ $item['uuid'] }}', {{ $item['is_publish'] }})">
+                                                        {{ $item['is_publish'] == 0 ? 'Publish' : 'Unpublish' }}
+                                                    </button>
                                                 </li>
                                                 <li>
-                                                    <button class="dropdown-item text-danger" data-id="{{ $item['uuid'] }}"
-                                                        onclick="deleteArticle(this)">Delete</button>
-                                                </li>                                                
+                                                    <button type="button" class="dropdown-item" onclick="window.location.href='{{ route('article.edit', $item['uuid']) }}'">Edit</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="dropdown-item text-danger"
+                                                        data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                                                        onclick="setDeleteForm('article', '{{ $item['uuid'] }}')">
+                                                        Delete
+                                                    </button>
+
+                                                    <form id="article-delete-form-{{ $item['uuid'] }}"
+                                                        action="{{ route('article.destroy', $item['uuid']) }}"
+                                                        method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </li>
                                             </ul>
                                         </div>
                                     </td>
@@ -154,4 +172,8 @@
     <script src="{{ URL::asset('build/plugins/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ URL::asset('build/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ URL::asset('build/js/main.js') }}"></script>
+    <script>
+        const errorMessages = @json(session('error_messages', []));
+        const successMessage = @json(session('success', ''));
+    </script>
 @endpush

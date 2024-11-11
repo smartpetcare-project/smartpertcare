@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title')
-    Products
+    Produk
 @endsection
 @section('content')
-    <x-page-title title="eCommerce" subtitle="Products" />
+    <x-page-title title="Produk" subtitle="views" />
 
     <div class="product-count d-flex align-items-center gap-3 gap-lg-4 mb-4 fw-medium flex-wrap font-text1">
         <a href="javascript:;"><span class="me-1">All</span><span class="text-secondary">({{ $countAllProduct }})</span></a>
@@ -70,7 +70,9 @@
         <div class="col-auto">
             <div class="d-flex align-items-center gap-2 justify-content-lg-end">
                 <button class="btn btn-filter px-4"><i class="bi bi-box-arrow-right me-2"></i>Export</button>
-                <button class="btn btn-primary px-4"><i class="bi bi-plus-lg me-2"></i>Add Product</button>
+                <button class="btn btn-primary px-4" onclick="window.location.href='{{ route('product.create') }}'">
+                    <i class="bi bi-plus-lg me-2"></i>Tambah Artikel
+                </button>
             </div>
         </div>
     </div><!--end row-->
@@ -87,8 +89,8 @@
                                 </th>
                                 <th>Product Name</th>
                                 <th>Price</th>
-                                <th>Category</th>                                
-                                <th>Rating</th>                                
+                                <th>Category</th>
+                                <th>Rating</th>
                                 <th>Date</th>
                                 <th>Action</th>
                             </tr>
@@ -106,18 +108,20 @@
                                                     alt="">
                                             </div>
                                             <div class="product-info">
-                                                <a href="javascript:;" class="product-title">{{ $item['name'] }}</a>
+                                                <a href="/admin/product/{{ $item['uuid'] }}"
+                                                    class="product-title">{{ $item['name'] }}</a>
                                                 <p class="mb-0 product-category">Category : {{ $item['category_name'] }}</p>
                                             </div>
                                         </div>
                                     </td>
                                     <td>Rp{{ number_format($item['price'], 0, ',', '.') }}</td>
-                                    <td>{{ $item['category_name'] }}</td>                                    
+                                    <td>{{ $item['category_name'] }}</td>
                                     <td>
                                         <div class="product-rating">
-                                            <i class="bi bi-star-fill text-warning me-2"></i><span>{{ $item['average_rating'] }}</span>
+                                            <i
+                                                class="bi bi-star-fill text-warning me-2"></i><span>{{ $item['average_rating'] }}</span>
                                         </div>
-                                    </td>                                    
+                                    </td>
                                     <td>
                                         {{ $item['updated_at'] }}
                                     </td>
@@ -128,9 +132,31 @@
                                                 <i class="bi bi-three-dots"></i>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li>
+                                                    <button type="button"
+                                                        class="dropdown-item {{ $item['is_publish'] == 1 ? 'text-danger' : 'text-success' }}"
+                                                        onclick="setChangeStatusForm('product','{{ $item['uuid'] }}', {{ $item['is_publish'] }})">
+                                                        {{ $item['is_publish'] == 0 ? 'Publish' : 'Unpublish' }}
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="dropdown-item"
+                                                        onclick="window.location.href='{{ route('product.edit', $item['uuid']) }}'">Edit</button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="dropdown-item text-danger"
+                                                        data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                                                        onclick="setDeleteForm('product', '{{ $item['uuid'] }}')">
+                                                        Delete
+                                                    </button>
+
+                                                    <form id="product-delete-form-{{ $item['uuid'] }}"
+                                                        action="{{ route('product.destroy', $item['uuid']) }}"
+                                                        method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </li>
                                             </ul>
                                         </div>
                                     </td>
@@ -149,4 +175,8 @@
     <script src="{{ URL::asset('build/plugins/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ URL::asset('build/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ URL::asset('build/js/main.js') }}"></script>
+    <script>
+        const errorMessages = @json(session('error_messages', []));
+        const successMessage = @json(session('success', ''));
+    </script>
 @endpush

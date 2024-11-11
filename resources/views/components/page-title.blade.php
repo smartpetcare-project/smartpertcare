@@ -10,7 +10,7 @@
             </ol>
         </nav>
     </div>
-    <div class="ms-auto">
+    {{-- <div class="ms-auto">
         <div class="btn-group">
             <button type="button" class="btn btn-outline-primary">Settings</button>
             <button type="button"
@@ -24,6 +24,6 @@
                 <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Separated link</a>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 <!--end breadcrumb-->
