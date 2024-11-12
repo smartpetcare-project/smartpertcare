@@ -93,4 +93,24 @@ class HomeController extends Controller
 
         return view('main-website.product-detail', compact('product'));
     }
+
+    public function about()
+    {
+        return view('main-website.about');
+    }
+
+    public function contact()
+    {
+        return view('main-website.contact');
+    }
+
+    public function team()
+    {
+        return view('main-website.team');
+    }
+
+    public function faq()
+    {
+        return view('main-website.faq');
+    }
 }

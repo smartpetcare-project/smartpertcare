@@ -21,6 +21,10 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{uuid}', [HomeController::class, 'blogDetail'])->name('blog.detail');
 Route::get('/product', [HomeController::class, 'product'])->name('product');
 Route::get('/product/{uuid}', [HomeController::class, 'productDetail'])->name('product.detail');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/team', [HomeController::class, 'team'])->name('team');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
