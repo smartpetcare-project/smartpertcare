@@ -37,10 +37,24 @@
         </div>
         <!-- Start Login Button Section -->
         <div class="login-btn-box mt-5">
-            <a href="/login" class="btn btn-primary"
-                style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-align: center; text-decoration: none; border-radius: 5px;">
-                Login
-            </a>
+            @php
+                $user = Auth::user();
+            @endphp
+            @if (!$user)
+                <a href="/login" class="btn btn-primary"
+                    style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-align: center; text-decoration: none; border-radius: 5px;">
+                    Login
+                </a>
+            @else
+                <button onclick="document.getElementById('logout-form').submit()" class="btn btn-primary"
+                    style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-align: center; text-decoration: none; border-radius: 5px;">
+                    Logout
+                </button>
+                <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                    @csrf
+                </form>
+            @endif
+
         </div>
         <!-- End Login Button Section -->
 

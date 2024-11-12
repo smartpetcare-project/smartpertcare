@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="breadcrumb-area"
-        style="background-image: url({{ $product['image_banner'] }});">
+        style="background-image: url({{ URL::asset('main-website/images/breadcrumb/breadcrumb-1.png') }});">
         <div class="banner-curve"></div>
         <div class="container">
             <div class="row">

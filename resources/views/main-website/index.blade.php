@@ -237,7 +237,7 @@
                                 <h3><a href="#">{{ $item['name'] }}</a></h3>
                                 <p>{{ $item['description'] }}</p>
                                 <div class="button">
-                                    <a href="#">Read More</a>
+                                    <a href="{{ route('service.detail', $item['uuid']) }}">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -597,33 +597,11 @@
                                         <li><span class="icon-tag"></span><a
                                                 href="#">{{ $item['category_name'] }}e</a></li>
                                     </ul>
-                                    <h3 class="blog-title"><a href="blog-single.html">{{ $item['title'] }}<span
+                                    <h3 class="blog-title"><a href="{{ route('blog.detail', $item['uuid']) }}">{{ $item['title'] }}<span
                                                 class="round-box zoominout"></span></a></h3>
                                 </div>
                             </div>
-                        @endforeach
-                        <!--End Single blog Style1-->
-                        <!--Start Single blog Style1-->
-                        <div class="single-blog-style1 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
-                            <div class="img-holder">
-                                <div class="date-box">
-                                    <h5>24th June 2020</h5>
-                                </div>
-                                <div class="inner">
-                                    <img src="{{ URL::asset('main-website/images/blog/blog-v1-3.jpg') }}"
-                                        alt="Awesome Image">
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <ul class="meta-info">
-                                    <li><span class="icon-user"></span><a href="#">By Admin</a></li>
-                                    <li><span class="icon-tag"></span><a href="#">Pet, Care, Medicine</a></li>
-                                </ul>
-                                <h3 class="blog-title"><a href="blog-single.html">Share five inspirational Quotes of
-                                        the Day with friends<span class="round-box zoominout"></span></a></h3>
-                            </div>
-                        </div>
-                        <!--End Single blog Style1-->
+                        @endforeach                                                
                     </div>
                 </div>
             </div>

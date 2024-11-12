@@ -50,7 +50,7 @@
                                             $imageContent = $article['image_content'];
                                             $firstImages = array_slice($imageContent, 0, 1);
                                             $middleImages = array_slice($imageContent, 1, 2);
-                                            $lastImages = array_slice($imageContent, 2, 2);
+                                            $lastImages = array_slice($imageContent, 2, 1);
 
                                             $contentParts = explode('</p>', $article['content']);
                                             $firstParagraph = $contentParts[0];
@@ -63,17 +63,36 @@
                                             $lastParagraph = $contentParts[count($contentParts) - 2];
                                         @endphp
 
-                                        @php                                            
+
+                                        @php
                                             $insertedMiddleContent = '';
+                                            $middleContentLength = count($middleContentParts);
+
+                                            // Randomly choose a single position to insert all middle images as a block
+                                            $randomPosition = rand(0, $middleContentLength - 1);
+                                            $imagesInserted = false; // Flag to check if images are inserted
+
                                             foreach ($middleContentParts as $index => $part) {
                                                 $insertedMiddleContent .= $part . '</p>';
-                                                if (isset($middleImages[$index])) {
-                                                    $insertedMiddleContent .=
-                                                        '<div class="blog-details-image-middle">
-                                                            <img src="' .
-                                                        $middleImages[$index] .
-                                                        '" alt="">
-                                                        </div>';
+
+                                                // Insert all middle images at the chosen random position only once
+                                                if (
+                                                    $index == $randomPosition &&
+                                                    !$imagesInserted &&
+                                                    !empty($middleImages)
+                                                ) {
+                                                    $insertedMiddleContent .= '<div class="row">';
+                                                    foreach ($middleImages as $image) {
+                                                        $insertedMiddleContent .=
+                                                        '
+                                                            <div class="col-xl-6">
+                                                                <div class="single-image-nox">
+                                                                    <img src="' . $image . '" alt="">
+                                                                </div>
+                                                            </div>';
+                                                        }
+                                                    $insertedMiddleContent .= '</div>';
+                                                    $imagesInserted = true; // Set flag to true after insertion
                                                 }
                                             }
                                         @endphp
@@ -88,12 +107,12 @@
 
                                         {!! $insertedMiddleContent !!}
 
-                                        
+
                                     </div>
 
                                     <div class="blog-details-image-2">
                                         <div class="image-box">
-                                            <img src="{{ URL::asset('main-website/images/blog/blog-details-image-2.jpg') }}"
+                                            <img src="{{ $lastImages[0] }}"
                                                 alt="">
                                         </div>
                                         <div class="text-box">

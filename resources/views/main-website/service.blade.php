@@ -304,7 +304,7 @@
                                         <li><span class="icon-tag"></span><a
                                                 href="#">{{ $item['category_name'] }}e</a></li>
                                     </ul>
-                                    <h3 class="blog-title"><a href="blog-single.html">{{ $item['title'] }}<span
+                                    <h3 class="blog-title"><a href="{{ route('service.detail', $item['uuid']) }}">{{ $item['title'] }}<span
                                                 class="round-box zoominout"></span></a></h3>
                                 </div>
                             </div>

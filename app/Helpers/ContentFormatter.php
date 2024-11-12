@@ -16,11 +16,6 @@ class ContentFormatter
         $article['category_name'] = $article['category']['name'] ?? 'No Category';
         $article['created_at'] = Carbon::parse($article['created_at'])->format('d M Y');
         $article['updated_at'] = Carbon::parse($article['updated_at'])->format('d M Y');
-        $ratings = $article['ratings'];
-        $averageRating = !empty($ratings) ? number_format(array_sum(array_column($ratings, 'rating')) / count($ratings), 1) : '0.0';
-        $article['average_rating'] = $averageRating;
-        $ratingCount = count($ratings);
-        $article['rating_count'] = $ratingCount;
 
         if ($fullContent) {
             $article['content'] = $article['content'];
@@ -35,6 +30,12 @@ class ContentFormatter
                 $article['content'] = 'No content available';
             }
         }
+
+        $ratings = $article['ratings'];
+        $averageRating = !empty($ratings) ? number_format(array_sum(array_column($ratings, 'rating')) / count($ratings), 1) : '0.0';
+        $article['average_rating'] = $averageRating;
+        $ratingCount = count($ratings);
+        $article['rating_count'] = $ratingCount;
 
         unset($article['category_id'], $article['category']);
 

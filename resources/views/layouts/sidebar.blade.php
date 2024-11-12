@@ -33,7 +33,7 @@
                        <div class="menu-title">Cards</div>
                    </a>
                </li> --}}
-               <li>
+               {{-- <li>
                    <a class="has-arrow" href="javascript:;">
                        <div class="parent-icon" style="font-size: 25px"><i class="fadeIn animated bx bx-world"></i>
                        </div>
@@ -61,7 +61,7 @@
                            </ul>
                        </li>
                    </ul>
-               </li>
+               </li> --}}
                <li>
                    <a href="javascript:;" class="has-arrow">
                        <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>

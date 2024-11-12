@@ -19,6 +19,8 @@ Route::get('/service', [HomeController::class, 'service'])->name('service');
 Route::get('service/{uuid}', [HomeController::class, 'serviceDetail'])->name('service.detail');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{uuid}', [HomeController::class, 'blogDetail'])->name('blog.detail');
+Route::get('/product', [HomeController::class, 'product'])->name('product');
+Route::get('/product/{uuid}', [HomeController::class, 'productDetail'])->name('product.detail');
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
