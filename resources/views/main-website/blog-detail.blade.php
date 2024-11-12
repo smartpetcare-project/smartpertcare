@@ -1,6 +1,27 @@
 @extends('layouts.main-layout')
 @section('title', 'Detail Layanan')
 @section('content')
+
+    <style>
+        .review-box ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .review-box ul button {
+            font-size: 24px;
+            color: #ccc;
+            /* Default gray color */
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .review-box ul button.active {
+            color: #FFD700;
+            /* Gold color for active stars */
+        }
+    </style>
     <section class="breadcrumb-area"
         style="background-image: url({{ URL::asset('main-website/images/breadcrumb/breadcrumb-1.png') }});">
         <div class="banner-curve-gray"></div>
@@ -84,13 +105,15 @@
                                                     $insertedMiddleContent .= '<div class="row">';
                                                     foreach ($middleImages as $image) {
                                                         $insertedMiddleContent .=
-                                                        '
+                                                            '
                                                             <div class="col-xl-6">
                                                                 <div class="single-image-nox">
-                                                                    <img src="' . $image . '" alt="">
+                                                                    <img src="' .
+                                                            $image .
+                                                            '" alt="">
                                                                 </div>
                                                             </div>';
-                                                        }
+                                                    }
                                                     $insertedMiddleContent .= '</div>';
                                                     $imagesInserted = true; // Set flag to true after insertion
                                                 }
@@ -112,8 +135,7 @@
 
                                     <div class="blog-details-image-2">
                                         <div class="image-box">
-                                            <img src="{{ $lastImages[0] }}"
-                                                alt="">
+                                            <img src="{{ $lastImages[0] }}" alt="">
                                         </div>
                                         <div class="text-box">
                                             {!! $lastParagraph !!}
@@ -263,33 +285,44 @@
                                 <div class="outer-box">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="single-comment">
-                                                <div class="single-comment-box">
-                                                    <div class="img-holder">
-                                                        <img src="{{ URL::asset('main-website/images/blog/comment-1.png') }}"
-                                                            alt="Awesome Image">
-                                                    </div>
-                                                    <div class="text-holder">
-                                                        <div class="top">
-                                                            <div class="name">
-                                                                <h3>Rosalina Kelian</h3>
-                                                                <h5><span class="icon-calendar"></span>24th March 2019</h5>
+                                            @foreach ($article['ratings'] as $item)
+                                                <div class="single-comment">
+                                                    <div class="single-comment-box">
+                                                        <div class="img-holder">
+                                                            <img src="{{ URL::asset('main-website/images/blog/comment-1.png') }}"
+                                                                alt="Awesome Image">
+                                                        </div>
+                                                        <div class="text-holder">
+                                                            <div class="top">
+                                                                <div class="name">
+                                                                    <h3>{{ $item['user']['name'] }}</h3>
+                                                                    <h5><span class="icon-calendar"></span>{{ $item['created_at'] }}</h5>
+                                                                </div>
+                                                                <div class="review-box">
+                                                                    <ul>
+                                                                        @for ($i = 1; $i <= 5; $i++)
+                                                                            @if ($i <= $item['rating'])
+                                                                                <li><i class="fa fa-star"></i></li>                                                                                
+                                                                            @else
+                                                                                <li><i class="fa fa-star-o"></i></li>                                                                                
+                                                                            @endif
+                                                                        @endfor
+                                                                    </ul>
+                                                                </div>
+                                                                {{-- <div class="reply">
+                                                                    <a href="#"><span
+                                                                            class="icon-reply"></span>Reply</a>
+                                                                </div> --}}
                                                             </div>
-                                                            <div class="reply">
-                                                                <a href="#"><span
-                                                                        class="icon-reply"></span>Reply</a>
+                                                            <div class="text">
+                                                                <p>{{ $item['review'] }}.</p>
                                                             </div>
                                                         </div>
-                                                        <div class="text">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                                do eiusmod tempor incididunt ut labore et dolore magna
-                                                                aliqua.</p>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </div>                                                
+                                            @endforeach
 
-                                            <div class="single-comment comment-reply">
+                                            {{-- <div class="single-comment comment-reply">
                                                 <div class="single-comment-box">
                                                     <div class="img-holder">
                                                         <img src="{{ URL::asset('main-website/images/blog/comment-2.png') }}"
@@ -313,75 +346,64 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="single-comment">
-                                                <div class="single-comment-box">
-                                                    <div class="img-holder">
-                                                        <img src="{{ URL::asset('main-website/images/blog/comment-3.png') }}"
-                                                            alt="Awesome Image">
-                                                    </div>
-                                                    <div class="text-holder">
-                                                        <div class="top">
-                                                            <div class="name">
-                                                                <h3>Arista Williamson</h3>
-                                                                <h5><span class="icon-calendar"></span>24th March 2019</h5>
-                                                            </div>
-                                                            <div class="reply">
-                                                                <a href="#"><span
-                                                                        class="icon-reply"></span>Reply</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                                do eiusmod tempor incididunt ut labore et dolore magna
-                                                                aliqua.</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </div>                                             --}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="add-comment-box">
-                                <div class="title">
-                                    <h3>Post Comment</h3>
-                                </div>
-                                <form id="add-comment-form" action="#">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="input-box">
-                                                <textarea name="message" placeholder="Type your comments...." required=""></textarea>
-                                                <div class="icon"><span class="icon-pen"></span></div>
+                            <div class="tab" id="comme">
+                                <form action="{{ route('ratings.store') }}" method="POST">
+                                    @csrf
+                                    <div class="review-form">
+                                        <div class="shop-page-title">
+                                            <div class="title">
+                                                <h3>Comments</h3>
+                                            </div>                                            
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="add-rating-box">
+                                                    <div class="add-rating-title">
+                                                        <p>Your Rating</p>
+                                                    </div>
+                                                    <div class="review-box">
+                                                        <ul id="star-rating">
+                                                            <button type="button" class="rating-number mr-2"
+                                                                value="1"><i class="fa fa-star"></i></button>
+                                                            <button type="button" class="rating-number mr-2"
+                                                                value="2"><i class="fa fa-star"></i></button>
+                                                            <button type="button" class="rating-number mr-2"
+                                                                value="3"><i class="fa fa-star"></i></button>
+                                                            <button type="button" class="rating-number mr-2"
+                                                                value="4"><i class="fa fa-star"></i></button>
+                                                            <button type="button" class="rating-number"
+                                                                value="5"><i class="fa fa-star"></i></button>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="input-box">
-                                                <input type="text" name="fname" placeholder="Type your name...."
-                                                    required="">
-                                                <div class="icon"><span class="icon-user"></span></div>
+
+                                        <input type="hidden" name="rating" id="rating-value" value="0">
+                                        <input type="hidden" name="rateable_type" value="article" id="rateable_type">
+                                        <input type="hidden" name="rateable_id" value="{{ $article['id'] }}"
+                                            id="rateable_id">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-3">
+                                                    <label for="review" class="form-label fw-bold">Your Review <span
+                                                            class="text-danger">*</span></label>
+                                                    <textarea id="review" name="review" class="form-control" placeholder="Write your review here..." required></textarea>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="input-box">
-                                                <input type="email" name="femail" placeholder="Type your email...."
-                                                    required="">
-                                                <div class="icon"><span class="icon-envelope"></span></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="input-box">
-                                                <input type="text" name="fwebsite"
-                                                    placeholder="Type your website....">
-                                                <div class="icon"><span class="icon-earth-grid-symbol"></span></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="button-box">
-                                                <button class="btn-one" type="submit">
-                                                    <span class="txt"><i class="icon-chat"></i>Post Comments</span>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button class="btn-one" type="submit" id="button-submit">
+                                                    <span class="txt">Submit<i class="flaticon-next"></i></span>
                                                 </button>
                                             </div>
                                         </div>
@@ -609,4 +631,65 @@
         </div>
     </section>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            @if (session('errorMessages'))
+                Toastify({
+                    text: "{{ session('errorMessages') }}",
+                    backgroundColor: "linear-gradient(to right, #FF5F6D, #FFC371)",
+                    close: true,
+                    gravity: "top", // top or bottom
+                    position: "right", // left, center, or right
+                    stopOnFocus: true
+                }).showToast();
+            @endif
+    
+            @if (session('successMessages'))
+                Toastify({
+                    text: "{{ session('successMessages') }}",
+                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true
+                }).showToast();
+            @endif
+    
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    Toastify({
+                        text: "{{ $error }}",
+                        backgroundColor: "linear-gradient(to right, #FF5F6D, #FFC371)",
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        stopOnFocus: true
+                    }).showToast();
+                @endforeach
+            @endif
+        });
+    </script>
+    
+    <script>
+        let rating = 0;
+        const ratingButtons = document.querySelectorAll('.rating-number');
+        const ratingValue = document.getElementById('rating-value');
+        const buttonSubmit = document.getElementById('button-submit');
+        ratingValue.value = rating;
+
+        ratingButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                rating = button.value;
+                ratingValue.value = rating;
+                ratingButtons.forEach((btn, index) => {
+                    if (index < button.value) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

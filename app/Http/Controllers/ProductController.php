@@ -116,7 +116,7 @@ class ProductController extends Controller
 
     public function show($uuid)
     {
-        $product = Product::where('uuid', $uuid)->with(['category', 'ratings'])->firstOrFail()->toArray();
+        $product = Product::where('uuid', $uuid)->with(['category', 'ratings.user'])->firstOrFail()->toArray();
 
         $product['image_preview'] = asset('storage/' . $product['image_preview']);
         $product['image_header'] = asset('storage/' . $product['image_header']);
@@ -134,8 +134,7 @@ class ProductController extends Controller
         $averageRating = !empty($ratings) ? number_format(array_sum(array_column($ratings, 'rating')) / count($ratings), 1) : '0.0';
         $product['average_rating'] = $averageRating;
         
-        $countRating = count($ratings);
-        // dd($product, $countRating);
+        $countRating = count($ratings);        
         return view('product.show', compact('product', 'countRating'));
     }
 

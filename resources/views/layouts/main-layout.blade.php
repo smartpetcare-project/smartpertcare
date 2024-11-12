@@ -34,6 +34,8 @@
         @if (View::getSection('title') != 'Landing Page')
             @include('components.footer')
         @endif
+
+        @include('components.modals')
     </div>
 
     <!-- jequery plugins -->

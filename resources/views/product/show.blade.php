@@ -43,7 +43,7 @@
                                 </li>
                                 <li>
                                     <button type="button" class="dropdown-item"
-                                        onclick="window.location.href='{{ route('product.edit', $item['uuid']) }}'">Edit</button>
+                                        onclick="window.location.href='{{ route('product.edit', $product['uuid']) }}'">Edit</button>
                                 </li>
                                 <li>
                                     <button type="button" class="dropdown-item text-danger" data-bs-toggle="modal"

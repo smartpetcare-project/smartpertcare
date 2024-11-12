@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Product;
 use App\Helpers\ContentFormatter;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -50,9 +51,16 @@ class HomeController extends Controller
 
     public function blogDetail($uuid)
     {
-        $article = Article::where('uuid', $uuid)->with(['category', 'user', 'ratings'])->first();
+        $article = Article::where('uuid', $uuid)->with(['category', 'user', 'ratings.user'])->first();
         $article = ContentFormatter::formatArticle($article->toArray(), true);
         
+        $article['ratings'] = collect($article['ratings'])->map(function ($rating) {
+            $rating['created_at'] = Carbon::parse($rating['created_at'])->format('d M Y');
+            $rating['updated_at'] = Carbon::parse($rating['updated_at'])->format('d M Y');
+            return $rating;
+        });
+        
+        // dd($article);
 
         return view('main-website.blog-detail', compact('article'));
     }
@@ -70,11 +78,18 @@ class HomeController extends Controller
 
     public function productDetail($uuid)
     {
-        $product = Product::where('uuid', $uuid)->with('category')->first();
+        $product = Product::where('uuid', $uuid)->with('category', 'ratings.user')->first();
         $product = ContentFormatter::formatProduct($product->toArray(), true);
         $DeskripsiMini = preg_match('/<p>(.*?)<\/p>/', $product['description'], $matches);
         $DeskripsiMini = !empty($matches[0]) ? $matches[0] : '<p>No description available</p>';
         $product['description_mini'] = $DeskripsiMini;
+
+        $product['ratings'] = collect($product['ratings'])->map(function ($rating) {
+            $rating['created_at'] = Carbon::parse($rating['created_at'])->format('d M Y');
+            $rating['updated_at'] = Carbon::parse($rating['updated_at'])->format('d M Y');
+            return $rating;
+        });
+        // dd($product);
 
         return view('main-website.product-detail', compact('product'));
     }

@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.js"></script>
 <script src="{{ URL::asset('main-website/js/jquery.js') }}"></script>
 <script src="{{ URL::asset('main-website/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ URL::asset('main-website/js/bootstrap-select.min.js') }}"></script>
@@ -29,3 +30,4 @@
 <script src="{{ URL::asset('main-website/js/jQuery.style.switcher.min.js') }}"></script>
 <!-- thm custom script -->
 <script src="{{ URL::asset('main-website/js/custom.js') }}"></script>
+

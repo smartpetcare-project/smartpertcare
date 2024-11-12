@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <link rel="stylesheet" href="{{ URL::asset('main-website/css/aos.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('main-website/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('main-website/css/imp.css') }}">

@@ -19,36 +19,33 @@ class RatingController extends Controller
 
     public function store(Request $request)
     {
-        
         $request->validate([
-            'rateable_type' => 'required|string|in:product,article', 
-            'rateable_id' => 'required|integer',                      
-            'rating' => 'required|integer|min:1|max:5',               
-            'review' => 'nullable|string|max:255',                    
-            'user_id' => 'required|exists:users,id',                  
+            'rateable_type' => 'required|string|in:product,article',
+            'rateable_id' => 'required|integer',
+            'rating' => 'required|integer|min:1|max:5',
+            'review' => 'nullable|string|max:255',
         ]);
 
-        
+        // Proses selanjutnya jika validasi berhasil
         $rateableModel = $request->rateable_type === 'product' ? Product::class : Article::class;
-
-        
         $rateable = $rateableModel::findOrFail($request->rateable_id);
 
-        
+        $user = auth()->user();
+        $userId = $user ? $user->id : null;
+
+        if ($userId === null) {
+            return redirect()->back()->with('errorMessages', 'You must login to rate this product');
+        }
+
         $rating = new Rating([
-            'uuid' => Str::uuid(),              
-            'user_id' => $request->user_id,     
-            'rating' => $request->rating,       
-            'review' => $request->review,       
+            'uuid' => Str::uuid(),
+            'user_id' => $userId,
+            'rating' => $request->rating,
+            'review' => $request->review,
         ]);
 
-        
         $rateable->ratings()->save($rating);
 
-        
-        return response()->json([
-            'message' => 'Rating added successfully', 
-            'rating' => $rating,                      
-        ], 201); 
+        return redirect()->back()->with('successMessages', 'Rating added successfully');
     }
 }
