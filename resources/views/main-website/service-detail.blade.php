@@ -3,14 +3,14 @@
 @section('content')
 
     <section class="breadcrumb-area"
-        style="background-image: url({{ URL::asset('main-website/images/breadcrumb/breadcrumb-1.png') }});">
+        style="background-image: url({{ URL::asset('main-website/images/slides/salshi.jpg') }});">
         <div class="banner-curve"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="inner-content clearfix text-center">
                         <div class="title wow slideInUp animated" data-wow-delay="0.3s" data-wow-duration="1500ms">
-                            <h2>{{ $product['name'] }}<span class="dotted"></span></h2>
+                            <h2>{{ $service['title'] }}<span class="dotted"></span></h2>
                         </div>
                         <div class="breadcrumb-menu wow slideInDown animated" data-wow-delay="0.3s"
                             data-wow-duration="1500ms">
@@ -33,28 +33,28 @@
                 <div class="col-xl-9 col-lg-8">
                     <div class="service-details-content">
                         <div class="service-details-main-image">
-                            <img src="{{ $product['image_header'] }}" alt="">
+                            <img src="{{ $service['image_header'] }}" alt="">
                             <div class="overlay-box">
                                 <div class="icon">
                                     <span class="icon-vaccine"></span>
                                 </div>
                                 <div class="title">
-                                    <h3>{{ $product['category_name'] }}</h3>
+                                    <h3>{{ $service['category_name'] }}</h3>
                                 </div>
                             </div>
                         </div>
                         @php
-                            $imageContent = $product['image_content'];
+                            $imageContent = $service['image_content'];
                             $firstImages = array_slice($imageContent, 0, 2);
                             $lastImages = array_slice($imageContent, 2, 2);
 
-                            $contentParts = explode('</p>', $product['description']);
+                            $contentParts = explode('</p>', $service['content']);
                             $firstParagraph = $contentParts[0];
                             $middleContent = implode('</p>', array_slice($contentParts, 1, count($contentParts) - 3));
                             $lastParagraph = $contentParts[count($contentParts) - 2];
                         @endphp
                         <div class="service-details-text-box">
-                            <h2>{{ $product['name'] }}<span class="dotted"></span></h2>
+                            <h2>{{ $service['title'] }}<span class="dotted"></span></h2>
                             {!! $firstParagraph !!}
                         </div>
                         @if ($firstImages)
@@ -102,10 +102,10 @@
                                 <ul class="categories clearfix">
                                     <li><a href="/service">View All Services</a></li>
                                     @php
-                                        $products = \App\Models\Product::all();
+                                        $services = \App\Models\Service::all();
                                     @endphp
-                                    @foreach ($products as $item)
-                                        <li><a href="{{ route('service.detail', $item->uuid) }}">{{ $item->name }}</a>
+                                    @foreach ($services as $item)
+                                        <li><a href="{{ route('service.detail', $item->uuid) }}">{{ $item->title }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -124,7 +124,7 @@
 
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xl-12">
                     <div class="servicedet-prev-next-option">
                         <div class="box prev">
@@ -155,7 +155,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
 

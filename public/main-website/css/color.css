@@ -101,7 +101,7 @@
 .mobile-menu .social-links li a:hover,
 .header-contact-info ul li a:hover,
 .hidden-bar .contact-info-box ul li h5{
-    color: #ff4880;
+    color: #678746;
 }
 
 
@@ -166,7 +166,7 @@
 .main-menu .navigation> li> ul> li> ul> li a:before,
 .bar-box:hover ul li.red2,
 .nav-outer .mobile-nav-toggler .inner {
-    background: #ff4880;
+    background: #678746;
 }
 
 
@@ -183,12 +183,12 @@
 .single-blog-style1 .img-holder .inner:before,
 .single-blog-style2 .img-holder .inner:before,
 .single-sidebar .instagram li .img-box .overlay-content {
-    background-color: rgba(255, 72, 128, 0.70);    
+    background-color: rgba(103, 135, 70, 0.70);    
 }
 
 .callto-action-box:before,
 .single-blog-style2 .outer-box:before{
-    background-color: rgba(255, 72, 128, 0.90);    
+    background-color: #678746;    
 }
 
 
@@ -200,10 +200,10 @@
 ***/
 .filter-checkbox input[type="checkbox"]:checked + label span,
 .owl-nav-style-one.owl-theme .owl-nav [class*="owl-"]:hover {
-    border-color: #ff4880;
+    border-color: #678746;
 }
 .mobile-menu .navigation li > a:before {
-    border-left: 5px solid #ff4880;
+    border-left: 5px solid #678746;
 }
 
 
@@ -287,5 +287,5 @@
     color: #f9be4f;    
 }
 .categorie-boxs li a span {
-    background: #e3356b;
+    background: #678746;
 }

@@ -101,6 +101,27 @@
 
                <li>
                    <a href="javascript:;" class="has-arrow">
+                       <div class="parent-icon" style="font-size: 25px"><i
+                               class="fadeIn animated bx bx-book-content"></i></div>
+                       <div class="menu-title">Layanan</div>
+                   </a>
+                   <ul>
+                       <li>
+                           <a href="{{ url('/admin/service') }}"
+                               class="{{ request()->is('service') || request()->is('service/preview/*') || request()->is('service/*') ? 'active' : '' }}">
+                               <i class="material-icons-outlined">arrow_right</i>Views
+                           </a>
+                       </li>
+                       <li>
+                           <a href="{{ url('/admin/service/create') }}"><i
+                                   class="material-icons-outlined">arrow_right</i>Tambah
+                               Layanan</a>
+                       </li>
+                   </ul>
+               </li>
+
+               <li>
+                   <a href="javascript:;" class="has-arrow">
                        <div class="parent-icon" style="font-size: 35px"><i class="fadeIn animated bx bx-list-check"></i>
                        </div>
                        <div class="menu-title">Kategori</div>

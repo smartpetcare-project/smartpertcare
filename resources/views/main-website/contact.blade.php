@@ -1,7 +1,7 @@
 @extends('layouts.main-layout')
 @section('title', 'Contact')
 @section('content')
-<section class="breadcrumb-area" style="background-image: url({{ URL::asset('main-website/images/breadcrumb/breadcrumb-1.png') }});">
+<section class="breadcrumb-area" style="background-image: url({{ URL::asset('main-website/images/slides/salshi.jpg') }});">
     <div class="banner-curve"></div>
     <div class="container">
         <div class="row">
@@ -33,8 +33,8 @@
                         <h3>Email Address<span class="dotted"></span></h3>
                     </div>
                     <ul>
-                        <li><a href="mailto:info@webmail.com">info@webmail.com</a></li>
-                        <li><a href="mailto:jobs@webmail.com">jobs@webmail.com</a></li>
+                        <li></li>
+                        <li><a href="mailto:smartpetscareofficial@gmail.com">smartpetscareofficial@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,36 +46,38 @@
                         <h3>Phone Number<span class="dotted"></span></h3>
                     </div>
                     <ul>
-                        <li><a href="tel:123456789">244-344-786-999-6</a></li>
-                        <li><a href="tel:123456789">987-675-987-908</a></li>
+                        <li><a></a></li>
+                        <li><a href="tel:+6285212622615">+62 85212622615</a></li>
                     </ul>
                 </div>
             </div>
+            
             <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
                 <div class="single-contact-info-box">
                     <span class="icon-pin-2"></span>
                     <div class="title">
                         <h3>Office Address<span class="dotted"></span></h3>
                     </div>
-                    <p>13/A, Jhumando City<br> New York, NYC</p>
+                    <p>Jl. Lodaya, Babakan, Bogor Tengah, Bogor, Jawa Barat, Kode Pos: 16128</p>
                 </div>
             </div>
+            
             <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="600ms">
                 <div class="single-contact-info-box">
-                    <span class=" icon-mail-1"></span>
+                    <span class="icon-mail-1"></span>
                     <div class="title">
                         <h3>Web Connection<span class="dotted"></span></h3>
                     </div>
                     <ul>
                         <li><a href="https://www.facebook.com/webexample">fb.com/webexample</a></li>
-                        <li><a href="https://www.facebook.com/webexample">tw.com/webexample</a></li>
+                        <li><a href="https://twitter.com/webexample">tw.com/webexample</a></li>
                     </ul>
                 </div>
             </div>
             
         </div>
     </div>
-</section>     
+</section>
 
 <section class="contact-form-style1-area">
     <div class="contact-form-style1-bg" style="background-image: url({{ URL::asset('main-website/images/shape/contact-form-style1-bg.png') }})"></div>
@@ -87,7 +89,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="contact-form contact-page">
-                    <form id="contact-form" name="contact_form" class="default-form2" action="{{ URL::asset('main-website/assets/inc/sendmail.php') }}" method="post">
+                    <form id="contact-form" name="contact_form" class="default-form2" action="{{ URL::asset('main-website/inc/sendmail.php') }}" method="post">
                         <div class="row">
                             <div class="col-xl-4 col-lg-4">
                                 <div class="input-box"> 
@@ -154,8 +156,7 @@
                                     </button> 
                                 </div>
                             </div>
-                        </div> 
-                         
+                        </div>
                     </form>
                 </div>   
             </div>
@@ -178,5 +179,6 @@
         </div>
     </div>  
 </section>
+
 
 @endsection

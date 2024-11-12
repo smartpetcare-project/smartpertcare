@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image_preview');            
             $table->string('image_header');
             $table->json('image_content');
+            $table->number('stock');
             $table->boolean('is_publish')->default(0);
             $table->timestamps();
         });

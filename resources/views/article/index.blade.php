@@ -15,11 +15,11 @@
 
     <div class="row g-3 d-flex justify-content-between">
         <div class="col-auto">
-            <div class="position-relative">
+            {{-- <div class="position-relative">
                 <input class="form-control px-5" type="search" placeholder="Search Products">
                 <span
                     class="material-icons-outlined position-absolute ms-3 translate-middle-y start-0 top-50 fs-5">search</span>
-            </div>
+            </div> --}}
         </div>
         {{-- <div class="col-auto flex-grow-1 overflow-auto">
             <div class="btn-group position-static">
@@ -69,7 +69,7 @@
         </div> --}}
         <div class="col-auto">
             <div class="d-flex align-items-center gap-2 justify-content-lg-end">
-                <button class="btn btn-filter px-4"><i class="bi bi-box-arrow-right me-2"></i>Export</button>
+                {{-- <button class="btn btn-filter px-4"><i class="bi bi-box-arrow-right me-2"></i>Export</button> --}}
                 <button class="btn btn-primary px-4" onclick="window.location.href='{{ route('article.create') }}'">
                     <i class="bi bi-plus-lg me-2"></i>Tambah Artikel
                 </button>

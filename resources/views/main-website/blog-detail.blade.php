@@ -22,22 +22,20 @@
             /* Gold color for active stars */
         }
     </style>
-    <section class="breadcrumb-area"
-        style="background-image: url({{ URL::asset('main-website/images/breadcrumb/breadcrumb-1.png') }});">
-        <div class="banner-curve-gray"></div>
+    <section class="breadcrumb-area" style="background-image: url({{ URL::asset('main-website/images/slides/salshi.jpg') }});">
+        <div class="banner-curve"></div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="inner-content clearfix text-center">
                         <div class="title wow slideInUp animated" data-wow-delay="0.3s" data-wow-duration="1500ms">
-                            <h2>News Details<span class="dotted"></span></h2>
+                           <h2>News Details<span class="dotted"></span></h2>
                         </div>
-                        <div class="breadcrumb-menu wow slideInDown animated" data-wow-delay="0.3s"
-                            data-wow-duration="1500ms">
+                        <div class="breadcrumb-menu wow slideInDown animated" data-wow-delay="0.3s" data-wow-duration="1500ms">
                             <ul class="clearfix">
                                 <li><a href="index.html">Home</a></li>
                                 <li class="active">News Details</li>
-                            </ul>
+                            </ul>    
                         </div>
                     </div>
                 </div>
@@ -59,70 +57,74 @@
                                     </div>
                                     <h2 class="blog-title">{{ $article['title'] }}.</h2>
                                     <ul class="meta-info">
-                                        <li><span class="icon-user"></span><a href="#">by
-                                                {{ $article['user']['name'] }}</a></li>
-                                        <li><span class="icon-calendar"></span><a
-                                                href="#">{{ $article['updated_at'] }}</a></li>
-                                        <li><span class="icon-chat"></span><a href="#">{{ $article['rating_count'] }}
-                                                Comments</a></li>
+                                        <li><span class="icon-user"></span>by
+                                                {{ $article['user']['name'] }}</li>
+                                        <li><span class="icon-calendar"></span>{{ $article['updated_at'] }}</li>
+                                        <li><span class="icon-chat">{{ $article['rating_count'] }} Comments</li>
                                     </ul>
                                     <div class="text">
                                         @php
-                                            $imageContent = $article['image_content'];
+                                            $imageContent = $article['image_content'] ?? [];
+                                            $contentParts = explode('</p>', $article['content'] ?? '');
+
+                                            // Default values
+                                            $firstParagraph = $contentParts[0] ?? '';
+                                            $middleContentParts = [];
+                                            $beforeLastParagraph = '';
+                                            $lastParagraph = '';
+
+                                            // Handle paragraphs based on count
+                                            if (count($contentParts) > 3) {
+                                                $middleContentParts = array_slice(
+                                                    $contentParts,
+                                                    1,
+                                                    count($contentParts) - 4,
+                                                );
+                                                $beforeLastParagraph = $contentParts[count($contentParts) - 3];
+                                                $lastParagraph = $contentParts[count($contentParts) - 2];
+                                            } elseif (count($contentParts) === 2) {
+                                                $lastParagraph = $contentParts[1];
+                                            }
+
+                                            // Handle images
                                             $firstImages = array_slice($imageContent, 0, 1);
                                             $middleImages = array_slice($imageContent, 1, 2);
                                             $lastImages = array_slice($imageContent, 2, 1);
 
-                                            $contentParts = explode('</p>', $article['content']);
-                                            $firstParagraph = $contentParts[0];
-                                            $middleContentParts = array_slice(
-                                                $contentParts,
-                                                1,
-                                                count($contentParts) - 4,
-                                            );
-                                            $beforeLastParagraph = $contentParts[count($contentParts) - 3];
-                                            $lastParagraph = $contentParts[count($contentParts) - 2];
-                                        @endphp
-
-
-                                        @php
                                             $insertedMiddleContent = '';
-                                            $middleContentLength = count($middleContentParts);
+                                            if (!empty($middleContentParts)) {
+                                                $middleContentLength = count($middleContentParts);
+                                                $randomPosition = rand(0, $middleContentLength - 1);
+                                                $imagesInserted = false;
 
-                                            // Randomly choose a single position to insert all middle images as a block
-                                            $randomPosition = rand(0, $middleContentLength - 1);
-                                            $imagesInserted = false; // Flag to check if images are inserted
+                                                foreach ($middleContentParts as $index => $part) {
+                                                    $insertedMiddleContent .= $part . '</p>';
 
-                                            foreach ($middleContentParts as $index => $part) {
-                                                $insertedMiddleContent .= $part . '</p>';
-
-                                                // Insert all middle images at the chosen random position only once
-                                                if (
-                                                    $index == $randomPosition &&
-                                                    !$imagesInserted &&
-                                                    !empty($middleImages)
-                                                ) {
-                                                    $insertedMiddleContent .= '<div class="row">';
-                                                    foreach ($middleImages as $image) {
-                                                        $insertedMiddleContent .=
-                                                            '
-                                                            <div class="col-xl-6">
-                                                                <div class="single-image-nox">
-                                                                    <img src="' .
-                                                            $image .
-                                                            '" alt="">
-                                                                </div>
-                                                            </div>';
+                                                    if (
+                                                        $index == $randomPosition &&
+                                                        !$imagesInserted &&
+                                                        !empty($middleImages)
+                                                    ) {
+                                                        $insertedMiddleContent .= '<div class="row">';
+                                                        foreach ($middleImages as $image) {
+                                                            $insertedMiddleContent .=
+                                                                '
+                                                                    <div class="col-xl-6">
+                                                                        <div class="single-image-nox">
+                                                                            <img src="' . $image . '" alt="">
+                                                                        </div>
+                                                                    </div>';
+                                                                }
+                                                        $insertedMiddleContent .= '</div>';
+                                                        $imagesInserted = true;
                                                     }
-                                                    $insertedMiddleContent .= '</div>';
-                                                    $imagesInserted = true; // Set flag to true after insertion
                                                 }
                                             }
                                         @endphp
 
                                         {!! $firstParagraph !!}
 
-                                        @if ($article['image_content'])
+                                        @if (!empty($firstImages))
                                             <div class="blog-details-image-1">
                                                 <img src="{{ $firstImages[0] }}" alt="">
                                             </div>
@@ -130,19 +132,22 @@
 
                                         {!! $insertedMiddleContent !!}
 
+                                        @if (!empty($lastImages))
+                                            <div class="blog-details-image-2">
+                                                <div class="image-box">
+                                                    <img src="{{ $lastImages[0] }}" alt="">
+                                                </div>
+                                                <div class="text-box">
+                                                    {!! $lastParagraph !!}
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        @if (!empty($beforeLastParagraph))
+                                            {!! $beforeLastParagraph !!}
+                                        @endif
 
                                     </div>
-
-                                    <div class="blog-details-image-2">
-                                        <div class="image-box">
-                                            <img src="{{ $lastImages[0] }}" alt="">
-                                        </div>
-                                        <div class="text-box">
-                                            {!! $lastParagraph !!}
-                                        </div>
-                                    </div>
-
-                                    {!! $beforeLastParagraph !!}
 
 
                                     <div class="tag-social-share-box">
@@ -180,7 +185,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="blog-prev-next-option">
+                                    {{-- <div class="blog-prev-next-option">
                                         <div class="single-box left">
                                             <p><a href="#">Prev Post</a></p>
                                             <h2><a href="#">Tips On Minimalist</a></h2>
@@ -194,7 +199,7 @@
                                             <p><a href="#">Next Post</a></p>
                                             <h2><a href="#">Less Is More</a></h2>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                                 <!--End Blog Details Single-->
@@ -296,15 +301,17 @@
                                                             <div class="top">
                                                                 <div class="name">
                                                                     <h3>{{ $item['user']['name'] }}</h3>
-                                                                    <h5><span class="icon-calendar"></span>{{ $item['created_at'] }}</h5>
+                                                                    <h5><span
+                                                                            class="icon-calendar"></span>{{ $item['created_at'] }}
+                                                                    </h5>
                                                                 </div>
                                                                 <div class="review-box">
                                                                     <ul>
                                                                         @for ($i = 1; $i <= 5; $i++)
                                                                             @if ($i <= $item['rating'])
-                                                                                <li><i class="fa fa-star"></i></li>                                                                                
+                                                                                <li><i class="fa fa-star"></i></li>
                                                                             @else
-                                                                                <li><i class="fa fa-star-o"></i></li>                                                                                
+                                                                                <li><i class="fa fa-star-o"></i></li>
                                                                             @endif
                                                                         @endfor
                                                                     </ul>
@@ -319,7 +326,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>                                                
+                                                </div>
                                             @endforeach
 
                                             {{-- <div class="single-comment comment-reply">
@@ -359,7 +366,7 @@
                                         <div class="shop-page-title">
                                             <div class="title">
                                                 <h3>Comments</h3>
-                                            </div>                                            
+                                            </div>
                                         </div>
 
                                         <div class="row mb-3">
@@ -644,7 +651,7 @@
                     stopOnFocus: true
                 }).showToast();
             @endif
-    
+
             @if (session('successMessages'))
                 Toastify({
                     text: "{{ session('successMessages') }}",
@@ -655,7 +662,7 @@
                     stopOnFocus: true
                 }).showToast();
             @endif
-    
+
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     Toastify({
@@ -670,7 +677,7 @@
             @endif
         });
     </script>
-    
+
     <script>
         let rating = 0;
         const ratingButtons = document.querySelectorAll('.rating-number');

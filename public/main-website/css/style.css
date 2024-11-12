@@ -74,7 +74,7 @@ body {
     height: 100%;
 }
 body {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
@@ -90,7 +90,7 @@ button {
     padding: 0;
 }
 h1, h2, h3, h4, h5, h6 {
-    color: #393d72;
+    color: #1c1d19;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -310,7 +310,7 @@ li{
 }
 .btn-one:hover,
 .btn-one:focus{
-    color: #393d72;
+    color: #1c1d19;
 }
 .btn-one.style2{
     color: #ffffff;
@@ -346,7 +346,7 @@ li{
 }
 
 .sec-title h2{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 60px;
     line-height: 1.1em;
     font-weight: 700;
@@ -558,7 +558,7 @@ li{
     transition: all 500ms ease;
 }
 .accordion-box .accordion .accord-btn h4 {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 18px;
     line-height: 30px;
     font-weight: 700;
@@ -609,7 +609,7 @@ li{
     display: block;
 }
 .accordion-box .accordion .accord-content p {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
@@ -1637,7 +1637,7 @@ select:focus {
     font-weight: 600;
 }
 .header-contact-info ul li a{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 14px;
     font-weight: 700;
     transition: all 200ms linear;
@@ -1667,7 +1667,7 @@ select:focus {
     margin-right: 0;
 }
 .header-social-link ul li a{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 14px;
     transition: all 500ms ease;
 }
@@ -1740,7 +1740,7 @@ select:focus {
 	position: relative;
 	display: block;
     padding: 35px 0;
-	color: #393d72;
+	color: #1c1d19;
 	font-size: 16px;
 	line-height: 30px;
 	font-weight: 700;
@@ -1820,7 +1820,7 @@ select:focus {
 	display: block;
     border-bottom: 1px solid #e9e9e9;
 	padding: 13px 0px 13px;
-	color: #393d72;
+	color: #1c1d19;
 	font-size: 15px;
 	line-height: 24px;
 	font-weight: 600;
@@ -1917,7 +1917,7 @@ select:focus {
 	display: block;
     border-bottom: 1px solid #e9e9e9;
 	padding: 13px 0px 13px;
-	color: #393d72;
+	color: #1c1d19;
 	font-size: 15px;
 	line-height: 24px;
 	font-weight: 600;
@@ -2115,7 +2115,7 @@ select:focus {
     margin: 0 5px 10px;
 }
 .bar-box ul li.red2{
-    background: #ffe2eb;
+    background: #aaafac;
     -webkit-transition: all 0.4s linear;
     -o-transition: all 0.4s linear;
     transition: all 0.4s linear;    
@@ -2260,7 +2260,7 @@ select:focus {
 }
 .main-slider .content h2{
 	position: relative;
-	color: #393d72;
+	color: #1c1d19;
 	font-size: 72px;
 	line-height: 1.2em;
 	font-weight: 700;
@@ -2707,13 +2707,13 @@ select:focus {
     margin: 0 0 5px;
 }
 .single-service-style1 .text-holder h3 a{
-    color: #393d72;
+    color: #1c1d19;
     transition: all 200ms linear;
     transition-delay: 0.1s;
 }
 
 .single-service-style1 .text-holder p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
@@ -2787,7 +2787,7 @@ select:focus {
     padding-top: 43px;
 }
 .video-gallery-content-box .button a{
-    background: #222444;
+    background: #1d1c19;
     line-height: 60px;
 }
 .video-gallery-content-box .button a i {
@@ -2916,7 +2916,7 @@ select:focus {
     padding-bottom: 25px;
 }
 .working-hours-box .title h3{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 24px;
     line-height: 32px;
     font-weight: 700;
@@ -2961,7 +2961,7 @@ select:focus {
     display: inline-block;
     background: #ffffff;
     padding-right: 40px;
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     font-weight: 700;
 }
@@ -3173,7 +3173,7 @@ select:focus {
     margin: 0 0 11px;
 }
 .single-team-member .title-holder h3 a {
-    color: #393d72;
+    color: #1c1d19;
     transition: all 500ms linear;
     transition-delay: 0.1s;
 }
@@ -3250,7 +3250,7 @@ select:focus {
     float: left;
     background: #f4f2ef;
     width: 130px;
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 60px;
     font-weight: 700;
@@ -3340,7 +3340,7 @@ select:focus {
     top: 10px;
 }
 .single-priceing-plan-box .top .right h2 {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 50px;
     line-height: 50px;
     font-weight: 700;
@@ -3364,7 +3364,7 @@ select:focus {
 .single-priceing-plan-box ul li{
     position: relative;
     display: block;
-    color: #393d72;
+    color: #1c1d19;
     font-size: 18px;
     line-height: 40px;
     font-weight: 700;
@@ -3387,7 +3387,7 @@ select:focus {
     display: block;
 }
 .single-priceing-plan-box .button a{
-    color: #393d72;
+    color: #1c1d19;
     padding: 0 40px; 
     line-height: 60px;
     background: #ffffff;
@@ -3412,7 +3412,7 @@ select:focus {
 
 
 .single-priceing-plan-box.style2{
-    background: #393d72;    
+    background: #1c1d19;    
 }
 .single-priceing-plan-box.style2 .top .left h2 {
     color: #ffffff;
@@ -3457,7 +3457,7 @@ select:focus {
 }
 .single-priceing-plan-box.style3 .button a{
     color: #ffffff;
-    background: #393d72;
+    background: #1c1d19;
 }
 .single-priceing-plan-box.style3 .button a i {
     color: #ffffff;
@@ -3584,7 +3584,7 @@ select:focus {
     padding-left: 50px;
 }
 .single-testimonial-style1 .text-holder h2 {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 30px;
     line-height: 40px;
     font-weight: 700;
@@ -3600,7 +3600,7 @@ select:focus {
     padding-top: 29px;
 }
 .single-testimonial-style1 .text-holder .text-box p {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 26px;
     line-height: 40px;
     font-weight: 400;
@@ -3638,7 +3638,7 @@ select:focus {
     z-index: 5;
 }
 .single-blog-style1 .img-holder .date-box h5{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 14px ;
     line-height: 24px;
     font-weight: 700 ;
@@ -3732,7 +3732,7 @@ select:focus {
     top: 0px;
 }
 .single-blog-style1 .text-holder .meta-info li a{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 14px;
     font-weight: 700;
     transition: all 200ms linear;
@@ -3746,7 +3746,7 @@ select:focus {
     margin: 9px 0 0px;
 }
 .single-blog-style1 .text-holder .blog-title a{
-    color: #18215e;
+    color: #1d1c19;
     transition: all 200ms linear;
     transition-delay: 0.1s;
 }
@@ -3805,12 +3805,12 @@ select:focus {
     display: inline-block;
 }
 .footer-logo .copy-right {
-    border-left: 2px solid #322b6d;
+    border-left: 2px solid #8fc424;
     padding-left: 20px;
     margin-left: 20px;
 }
 .footer-logo .copy-right p {
-    color: #8689b3;
+    color: #aaafac;
     font-size: 14px;
     line-height: 23px;
     margin: 0;
@@ -3885,7 +3885,7 @@ select:focus {
     margin-left: 15px;
 }
 .footer-contact-info .single-box .title span {
-    color: #8285ab;
+    color: #aaafac;
     font-size: 14px;
     line-height: 24px;
     font-weight: 700;
@@ -4098,7 +4098,7 @@ select:focus {
     border: 0px solid #e5e5e5;
     width: 100%;
     height: 60px;
-    color: #393d72;
+    color: #1c1d19;
     font-size: 14px;
     font-weight: 700;
     font-style: normal;
@@ -4116,16 +4116,16 @@ select:focus {
     z-index: 10;
 }
 .thm-formbox1 input[type="text"]::-webkit-input-placeholder {
-    color: #393d72;
+    color: #1c1d19;
 }
 .thm-formbox1 input[type="text"]:-moz-placeholder {
-    color: #393d72;
+    color: #1c1d19;
 }
 .thm-formbox1 input[type="text"]::-moz-placeholder {
-    color: #393d72;
+    color: #1c1d19;
 }
 .thm-formbox1 input[type="text"]:-ms-input-placeholder {
-    color: #393d72;
+    color: #1c1d19;
 }
 
 
@@ -4255,7 +4255,7 @@ select:focus {
     padding-top: 20px;
 }
 .about-style1-content-box.style1instyle2 .inner-content .button-box a{
-    background: #393d72;
+    background: #1c1d19;
     line-height: 60px;
     padding-left: 30px;
     padding-right: 30px;
@@ -4306,7 +4306,7 @@ select:focus {
     padding-bottom: 23px;
 }
 .cost-calculator-box .title h3{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 24px;
     line-height: 30px;
     font-weight: 700;
@@ -4465,7 +4465,7 @@ select:focus {
     position: relative;
 }
 .calculating-box .text .left p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 14px;
     line-height: 20px;
     font-weight: 700;
@@ -4475,7 +4475,7 @@ select:focus {
     position: relative;
 }
 .calculating-box .text .right p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 14px;
     line-height: 20px;
     font-weight: 700;
@@ -4609,12 +4609,12 @@ select:focus {
     margin: 0 0 5px;
 }
 .single-service-style2 .text-holder h3 a{
-    color: #393d72;
+    color: #1c1d19;
     transition: all 200ms linear;
     transition-delay: 0.1s;
 }
 .single-service-style2 .text-holder p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
@@ -4739,14 +4739,14 @@ select:focus {
     padding-left: 30px;
 }
 .feautres-style2-content-box .inner-content ul li .text h3 {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 24px;
     line-height: 34px;
     font-weight: 700;
     margin: 0 0 4px;
 }
 .feautres-style2-content-box .inner-content ul li .text p {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
@@ -4893,7 +4893,7 @@ select:focus {
     line-height: 0;
 }
 .offers-content-box .big-title{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 60px;
     line-height: 70px;
     font-weight: 700;
@@ -4901,7 +4901,7 @@ select:focus {
     margin: 0 0 15px;
 }
 .offers-content-box p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
@@ -5041,7 +5041,7 @@ select:focus {
     margin: 32px 0 13px;
 }
 .single-contact-info-box .title h3{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 24px;
     line-height: 34px;
     font-weight: 700;
@@ -5063,7 +5063,7 @@ select:focus {
     line-height: 28px;
 }
 .single-contact-info-box ul li a{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 700;
@@ -5072,7 +5072,7 @@ select:focus {
 }
 
 .single-contact-info-box p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 28px;
     font-weight: 700;
@@ -5135,7 +5135,7 @@ select:focus {
     padding-top: 22px;
 }
 .single-blog-style1.style1instyle2 .text-holder .text p {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
@@ -5188,7 +5188,7 @@ select:focus {
 .footer-style2-area{
     position: relative;
     display: block;
-    background: #22254a;
+    background: #1d1c19;
 }
 .footer-top-content {
     position: relative;
@@ -5198,7 +5198,7 @@ select:focus {
     align-items: center;
     flex-wrap: wrap;
     padding: 80px 0 40px;
-    border-bottom: 2px solid #353862;
+    border-bottom: 2px solid #1d1c19;
 }
 .footer-top-content .footer-logo{
     margin: 0;
@@ -5516,7 +5516,7 @@ select:focus {
     padding-left: 20px;
 }
 .service-details-main-image .overlay-box .title h3{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 20px;
     line-height: 30px;
     font-weight: 700;
@@ -5533,7 +5533,7 @@ select:focus {
     margin-bottom: 53px;
 }
 .service-details-text-box h2 {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 60px;
     line-height: 70px;
     font-weight: 700;
@@ -5547,7 +5547,7 @@ select:focus {
     border-radius: 50%;
 }
 .service-details-text-box p{
-    color:#393d72;
+    color:#1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
@@ -5597,7 +5597,7 @@ select:focus {
     padding-top: 24px;
 }
 .service-details-bottom-text p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
@@ -5621,7 +5621,7 @@ select:focus {
     margin-bottom: 17px;
 }
 .service-details-sidebar .title h3{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 20px;
     line-height: 30px;
     font-weight: 700;
@@ -5650,7 +5650,7 @@ select:focus {
 .categories-box ul li a{
     position: relative;
     display: block;
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 45px;
     font-weight: 700;
@@ -5846,7 +5846,7 @@ select:focus {
     display: block;
 }
 .breadcrumb-area .title h2{
-    color: #ffffff;
+    color: #1d1c19;
     font-size: 72px;
     line-height: 1.1em;
     font-weight: 700;
@@ -5925,7 +5925,7 @@ select:focus {
     font-size: 60px;
 }
 .single-filter-box h3 {
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 700;
@@ -6040,7 +6040,7 @@ select:focus {
 .progress-block .graph-outer .count-text {
     position: relative;
     display: inline-block;
-    color: #393d72;
+    color: #1c1d19;
     font-size: 80px;
     line-height: 70px;
     font-weight: 700;
@@ -6051,14 +6051,14 @@ select:focus {
     display: block;
 }
 .progress-block .title h2{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 30px;
     line-height: 40px;
     font-weight: 700;
     margin: 0 0 4px;
 }
 .progress-block .title p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     font-weight: 600;
     margin: 0;
@@ -6078,7 +6078,7 @@ select:focus {
     padding-bottom: 7px;
 }
 .skillset-content-box .text p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
@@ -6103,7 +6103,7 @@ select:focus {
     padding-left: 30px;
 }
 .skillset-content-box .bottom-text .text-box p{
-    color: #393d72;
+    color: #1c1d19;
     font-size: 16px;
     line-height: 26px;
     font-weight: 400;
@@ -6126,7 +6126,7 @@ select:focus {
 .fact-counter-box{
     position: relative;
     display: block;
-    background: #393d72;
+    background: #1c1d19;
     padding: 57px 0 3px;
     border-radius: 30px;
 }
@@ -9187,7 +9187,7 @@ select:focus {
 .error-content .title {
     position: relative;
     display: block;
-    color: #393d72;
+    color: #1c1d19;
     font-size: 180px;
     line-height: 150px;
     font-weight: 700;

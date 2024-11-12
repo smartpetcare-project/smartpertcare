@@ -36,7 +36,7 @@
                 <div class="header-left clearfix pull-left">
                    
                     <div class="logo">
-                        <a href="index.html"><img src="{{ URL::asset('main-website/images/resources/logo.png') }}" alt="Awesome Logo" title=""></a>
+                        <a href="/"><img src="{{ URL::asset('main-website/images/resources/logosmartpetscare1.png') }}" alt="Awesome Logo" title="" style="width: 82px; height: auto;"></a>
                     </div>
                     
                     <div class="nav-outer clearfix">
@@ -117,7 +117,7 @@
             <div class="clearfix">
                 <!--Logo-->
                 <div class="logo float-left">
-                    <a href="index.html" class="img-responsive"><img src="{{ URL::asset('main-website/images/resources/sticky-logo.png') }}" alt="" title=""></a>
+                    <a href="/" class="img-responsive"><img src="{{ URL::asset('main-website/images/resources/logosmartpetscare1.png') }}" alt="" title="" style="width: 82px; height: auto;"></a>
                 </div>
                 <!--Right Col-->
                 <div class="right-col float-right">
@@ -137,7 +137,7 @@
         <div class="close-btn"><span class="icon flaticon-multiply"></span></div>
 
         <nav class="menu-box">
-            <div class="nav-logo"><a href="index.html"><img src="{{ URL::asset('main-website/images/resources/mobilemenu-logo.png') }}" alt="" title=""></a></div>
+            <div class="nav-logo"><a href="index.html"><img src="{{ URL::asset('main-website/images/resources/logosmartpetscare1.png') }}" alt="" title=""></a></div>
             <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
             <!--Social Links-->
             <div class="social-links">

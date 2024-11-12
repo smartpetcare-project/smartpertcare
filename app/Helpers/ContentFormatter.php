@@ -42,6 +42,41 @@ class ContentFormatter
         return $article;
     }
 
+    public static function formatService($service, $fullContent = false)
+    {
+        $service['image_preview'] = asset('storage/' . $service['image_preview']);
+        $service['image_header'] = asset('storage/' . $service['image_header']);
+        $service['image_content'] = json_decode($service['image_content']);
+        $service['image_content'] = array_map(fn($image) => asset('storage/' . $image), $service['image_content']);
+
+        $service['category_name'] = $service['category']['name'] ?? 'No Category';
+        $service['created_at'] = Carbon::parse($service['created_at'])->format('d M Y');
+        $service['updated_at'] = Carbon::parse($service['updated_at'])->format('d M Y');
+
+        if ($fullContent) {
+            $service['content'] = $service['content'];
+        } else {
+            preg_match('/<p>(.*?)<\/p>/', $service['content'], $matches);
+            if (!empty($matches[1])) {
+                preg_match('/<p>(.*?)<\/p>/', $service['content'], $matches);
+                $firstSentence = !empty($matches[1]) ? explode('.', strip_tags($matches[1]))[0] . '.' : 'No content available';
+                $service['content'] = $firstSentence;
+            } else {
+                $service['content'] = 'No content available';
+            }
+        }
+
+        $ratings = $service['ratings'];
+        $averageRating = !empty($ratings) ? number_format(array_sum(array_column($ratings, 'rating')) / count($ratings), 1) : '0.0';
+        $service['average_rating'] = $averageRating;
+        $ratingCount = count($ratings);
+        $service['rating_count'] = $ratingCount;
+
+        unset($service['category_id'], $service['category']);
+
+        return $service;
+    }
+
     public static function formatProduct($product, $fullDescription = false)
     {
         $product['image_preview'] = asset('storage/' . $product['image_preview']);

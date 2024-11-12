@@ -106,6 +106,7 @@
                                 <option value="">Pilih Tipe</option>
                                 <option value="product">Produk</option>
                                 <option value="article">Artikel</option>
+                                <option value="service">Service</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-outline-primary flex-fill">Publish</button>

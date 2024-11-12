@@ -31,9 +31,7 @@
 
         @yield('content')
 
-        @if (View::getSection('title') != 'Landing Page')
-            @include('components.footer')
-        @endif
+        @include('components.footer')
 
         @include('components.modals')
     </div>

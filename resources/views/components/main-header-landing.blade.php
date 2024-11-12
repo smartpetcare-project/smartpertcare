@@ -7,12 +7,8 @@
                 <div class="header-top-left pull-left">
                     <div class="header-contact-info">
                         <ul>
-                            <li><span class="icon-envelope"></span><a
-                                    href="mailto:smartpetscareofficial@gmail.com">smartpetscareofficial@gmail.com</a>
-                            </li>
-                            <li><span class="icon-phone-call"></span><a
-                                    href="https://api.whatsapp.com/send?phone=6285212622615">+62 8521-2622-615</a>
-                            </li>
+                            <li><span class="icon-envelope"></span><a href="mailto:smartpetscareofficial@gmail.com">smartpetscareofficial@gmail.com</a></li>
+                            <li><span class="icon-phone-call"></span><a href="https://api.whatsapp.com/send?phone=6285212622615">+62 8521-2622-615</a></li>
                         </ul>
                     </div>
                 </div>
@@ -40,9 +36,7 @@
                 <div class="header-left clearfix pull-left">
 
                     <div class="logo">
-                        <a href="index.html"><img
-                                src="{{ URL::asset('main-website/images/resources/logo.png') }}"
-                                alt="Awesome Logo" title=""></a>
+                        <a href="/"><img src="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}" alt="Awesome Logo" title="" style="width: 82px; height: auto;"></a>
                     </div>
 
                     <div class="nav-outer clearfix">
@@ -123,9 +117,7 @@
             <div class="clearfix">
                 <!--Logo-->
                 <div class="logo float-left">
-                    <a href="index.html" class="img-responsive"><img
-                            src="{{ URL::asset('main-website/images/resources/sticky-logo.png') }}"
-                            alt="" title=""></a>
+                    <a href="/" class="img-responsive"><img src="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}" alt="" title="" style="width: 82px; height: auto;"></a>
                 </div>
                 <!--Right Col-->
                 <div class="right-col float-right">
@@ -146,7 +138,7 @@
 
         <nav class="menu-box">
             <div class="nav-logo"><a href="index.html"><img
-                        src="{{ URL::asset('main-website/images/resources/mobilemenu-logo.png') }}"
+                        src="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}"
                         alt="" title=""></a></div>
             <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
             </div>

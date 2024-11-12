@@ -1,8 +1,8 @@
 @extends('layouts.main-layout')
 @section('title', 'Layanan')
 @section('content')
-    <section class="breadcrumb-area style2"
-        style="background-image: url({{ URL::asset('main-website/images/breadcrumb/breadcrumb-1.png') }});">
+    <section class="breadcrumb-area"
+        style="background-image: url({{ URL::asset('main-website/images/slides/salshi.jpg') }});">
         <div class="banner-curve"></div>
         <div class="container">
             <div class="row">
@@ -27,9 +27,8 @@
         <div class="container">
             <div class="row">
                 <!--Start Single Service Style1-->
-                @foreach ($products as $item)
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="0ms"
-                        data-wow-duration="1500ms">
+                @foreach ($services as $item)
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <div class="single-service-style1">
                             <div class="img-holder">
                                 <div class="inner">
@@ -37,8 +36,8 @@
                                 </div>
                             </div>
                             <div class="text-holder">
-                                <h3><a href="#">{{ $item['name'] }}</a></h3>
-                                <p>{{ $item['description'] }}</p>
+                                <h3><a href="#">{{ $item['title'] }}</a></h3>
+                                <p>{{ $item['content'] }}</p>
                                 <div class="button">
                                     <a href="{{ route('service.detail', $item['uuid']) }}">Read More</a>
                                 </div>
@@ -141,8 +140,7 @@
                             <img src="{{ URL::asset('main-website/images/resources/faq-top-image.jpg') }}" alt="">
                         </div>
                         <div class="faq-main-image">
-                            <img src="{{ URL::asset('main-website/images/resources/faq-main-image.jpg') }}"
-                                alt="">
+                            <img src="{{ URL::asset('main-website/images/resources/faq-main-image.jpg') }}" alt="">
                             <div class="box zoominout"></div>
                         </div>
                         <div class="faq-bottom">
@@ -304,7 +302,8 @@
                                         <li><span class="icon-tag"></span><a
                                                 href="#">{{ $item['category_name'] }}e</a></li>
                                     </ul>
-                                    <h3 class="blog-title"><a href="{{ route('service.detail', $item['uuid']) }}">{{ $item['title'] }}<span
+                                    <h3 class="blog-title"><a
+                                            href="{{ route('service.detail', $item['uuid']) }}">{{ $item['title'] }}<span
                                                 class="round-box zoominout"></span></a></h3>
                                 </div>
                             </div>

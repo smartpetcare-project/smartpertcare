@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\ServiceController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,12 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::prefix('article')->group(function () {        
         Route::post('/change-status/{uuid}', [ArticleController::class, 'changeStatus'])->name('article.change-status');
         Route::get('/preview/{uuid}', [ArticleController::class, 'preview'])->name('article.preview');
+    });
+
+    Route::resource('service', ServiceController::class);
+    Route::prefix('service')->group(function () {
+        Route::post('/change-status/{uuid}', [ServiceController::class, 'changeStatus'])->name('service.change-status');
+        Route::get('/preview/{uuid}', [ServiceController::class, 'preview'])->name('service.preview');
     });
     
     Route::resource('category', CategoryController::class);

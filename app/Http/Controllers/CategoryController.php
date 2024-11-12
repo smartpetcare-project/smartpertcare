@@ -25,7 +25,7 @@ class CategoryController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'type' => 'required|in:product,article'
+            'type' => 'required|in:product,article,service'
         ]);
 
         if ($validate->fails()) {

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->string('name');
-            $table->enum('type', ['product', 'article']);
+            $table->enum('type', ['product', 'article', 'service']);
             $table->timestamps();
         });
     }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -23,7 +26,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $user = auth()->user()->toArray();
+        $countAllUser = User::where('role', '!=', 'admin')->count();
+        $countAllProduct = Product::count();
+        $countAllArticle = Article::count();
+
+        return view('index', compact('user', 'countAllUser', 'countAllProduct', 'countAllArticle'));
     }
 
     public function root(Request $request)

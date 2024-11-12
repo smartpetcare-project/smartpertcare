@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Product;
 use App\Helpers\ContentFormatter;
+use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -21,20 +22,21 @@ class HomeController extends Controller
     public function service()
     {
         $articles = Article::with(['category', 'user', 'ratings'])->get()->map(fn($article) => ContentFormatter::formatArticle($article->toArray()));
-        $products = Product::all()->map(fn($product) => ContentFormatter::formatProduct($product->toArray(), false));
+        $services = Service::with(['category', 'user', 'ratings'])->get()->map(fn($service) => ContentFormatter::formatService($service->toArray()));
 
-        return view('main-website.service', compact('articles', 'products'));
+        return view('main-website.service', compact('articles', 'services'));
     }
 
     public function serviceDetail($uuid)
-    {
-        $product = Product::where('uuid', $uuid)->with('category')->first();
-        $uuidProduct = Product::select('uuid')->get();
+    {        
+        $service = Service::where('uuid', $uuid)->with('category', 'ratings')->first();
+        $uuidService = Service::select('uuid')->get();
+        // dd($service);        
 
-        $product = ContentFormatter::formatProduct($product->toArray(), true);
+        $service = ContentFormatter::formatService($service->toArray(), true);
         // dd($product);
 
-        return view('main-website.service-detail', compact('product', 'uuidProduct'));
+        return view('main-website.service-detail', compact('service', 'uuidService'));
     }
 
     public function blog()

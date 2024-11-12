@@ -2,7 +2,7 @@
 @section('title', 'About')
 @section('content')
 
-<section class="breadcrumb-area" style="background-image: url({{ URL::asset('main-website/images/breadcrumb/breadcrumb-1.png') }});">
+<section class="breadcrumb-area" style="background-image: url({{ URL::asset('main-website/images/slides/salshi.jpg') }});">
     <div class="banner-curve"></div>
     <div class="container">
         <div class="row">
@@ -30,26 +30,25 @@
                 <div class="about-style1-content-box style1instyle2">
                     <div class="sec-title">
                         <h5>//<span>About Us</span>//</h5>
-                        <h2>Best Agency For<br> Your Pet<span class="round-box zoominout"></span></h2>
+                        <h2>Best Company For<br> Your Pet<span class="round-box zoominout"></span></h2>
                     </div> 
                     <div class="inner-content">
                         <div class="text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
+                            <p>SmartPets Care Company merupakan perusahaan yang bergerak dalam bidang kesehatan hewan dengan produk yang berkualitas, ramah lingkungan, dan ekonomis.</p>
                         </div>
-                        <div class="button-box">
-                            <a class="btn-one" href="#"><span class="txt">Make Appointment</span></a> 
-                            <a class="btn-one style2 marleft" href="tel:123456789">
-                                <i class="fa fa-phone" aria-hidden="true"></i><span class="txt">987-876-876-87</span>
-                            </a>
+                        <div>
+                            <p>
+                                Visi SmartPetsCare Company adalah menjadi usaha inovatif yang menyediakan produk perawatan hewan aman dan ramah lingkungan, mendukung konsep One Health, serta berkomitmen pada keberlanjutan. Dengan bahan alami, SmartPetsCare berupaya meningkatkan kesadaran kesehatan hewan, menyediakan solusi perawatan praktis, dan menjaga hubungan baik dengan pelanggan melalui layanan responsif dan edukatif.
+                            </p>
                         </div>
                     </div>   
                 </div> 
             </div>
             
             <div class="col-xl-7">
-                <div class="video-holder-box style2 text-center" style="background-image: url(images/resources/video-gallery-bg-2.jpg)">
+                <div class="video-holder-box style2 text-center" style="background-image: url({{ URL::asset('main-website/images/resources/produk.jpg') }});">
                     <div class="icon">
-                        <a class="video-popup" title="CarePress" href="https://www.youtube.com/watch?v=p25gICT63ek">
+                        <a class="video-popup" title="CarePress" href="https://cvf.shopee.co.id/file/api/v4/11110107/mms/id-11110107-6ke19-lxil4x1v5c9n39.16000081720545728.mp4">
                             <span class="icon-play-button"></span>
                         </a>
                     </div>
@@ -59,9 +58,7 @@
         </div>
     </div>
 </section>
-<!--End About Style2 Area-->
 
-<!-- Start Showcase Area -->
 <section class="showcase-area">
     <div class="container">
         <div class="sec-title text-center">
@@ -73,7 +70,7 @@
             <div class="col-xl-3 col-lg-3 col-md-6">
                 <div class="single-showcase-box">
                     <div class="img-holder">
-                        <img src="images/resources/showcase-1.jpg" alt=""/>
+                        <img src="{{ URL::asset('main-website/images/resources/produk2.jpg') }}" alt=""/>
                     </div> 
                 </div>
             </div>
@@ -82,7 +79,7 @@
             <div class="col-xl-6 col-lg-6 col-md-6">
                 <div class="single-showcase-box">
                     <div class="img-holder">
-                        <img src="images/resources/showcase-2.jpg" alt=""/>
+                        <img src="{{ URL::asset('main-website/images/resources/produk.jpg') }}" alt=""/>
                     </div> 
                 </div>
             </div>
@@ -91,7 +88,7 @@
             <div class="col-xl-3 col-lg-3 col-md-6">
                 <div class="single-showcase-box">
                     <div class="img-holder">
-                        <img src="images/resources/showcase-3.jpg" alt=""/>
+                        <img src="{{ URL::asset('main-website/images/resources/produk2.jpg') }}" alt=""/>
                     </div> 
                 </div>
             </div>
@@ -101,7 +98,7 @@
             <div class="col-xl-3 col-lg-3 col-md-6">
                 <div class="single-showcase-box">
                     <div class="img-holder">
-                        <img src="images/resources/showcase-4.jpg" alt=""/>
+                        <img src="{{ URL::asset('main-website/images/resources/produk2.jpg') }}" alt=""/>
                     </div> 
                 </div>
             </div>
@@ -110,14 +107,13 @@
             <div class="col-xl-3 col-lg-3 col-md-6">
                 <div class="single-showcase-box">
                     <div class="img-holder">
-                        <img src="images/resources/showcase-5.jpg" alt=""/>
+                        <img src="{{ URL::asset('main-website/images/resources/produk2.jpg') }}" alt=""/>
                     </div> 
                 </div>
             </div>
             <!--End Single Showcase box-->
         </div>
     </div>
-    
 </section>
 
 <section class="skillset-area">
@@ -186,10 +182,7 @@
         </div>
     </div>
 </section>
-<!--End Skillset Area--> 
 
-
-<!--Start Fact Counter Area-->
 <section class="fact-counter-area">
     <div class="container">
         <div class="row">
@@ -248,17 +241,12 @@
                             </div>
                         </div>
                         <!--End Single Fact Counter-->
-                        
                     </div>
                 </div>
             </div>
-        
         </div>
     </div>
-</section>   
-<!--End Fact Counter Area-->
-
-<!--Start Contact Form Style1 Area-->
+</section>
 <section class="contact-form-style1-area">
     <div class="contact-form-style1-bg" style="background-image: url({{ URL::asset('main-website/images/shape/contact-form-style1-bg.png') }})"></div>
     <div class="container">
@@ -269,81 +257,78 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="contact-form contact-page">
-                    <form id="contact-form" name="contact_form" class="default-form2" action="{{ URL::asset('main-website/assets/inc/sendmail.php') }}" method="post">
+                    <form id="contact-form" name="contact_form" class="default-form2" action="{{ URL::asset('main-website/inc/sendmail.php') }}" method="post">
                         <div class="row">
                             <div class="col-xl-4 col-lg-4">
-                                <div class="input-box"> 
+                                <div class="input-box">
                                     <input type="text" name="form_name" value="" placeholder="Your name" required="">
                                     <div class="icon">
                                         <span class="icon-user"></span>
-                                    </div> 
-                                </div>    
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-xl-4 col-lg-4">
-                                <div class="input-box"> 
+                                <div class="input-box">
                                     <input type="email" name="form_email" value="" placeholder="Email address" required="">
                                     <div class="icon">
                                         <span class="icon-envelope"></span>
-                                    </div> 
-                                </div>     
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-xl-4 col-lg-4">
-                                <div class="input-box"> 
+                                <div class="input-box">
                                     <select class="selectpicker" data-width="100%">
                                         <option selected="selected">Select Subject</option>
                                         <option>Pet Grooming</option>
-                                        <option>Dog Setting</option>
+                                        <option>Dog Sitting</option>
                                         <option>Healthy Meals</option>
                                         <option>Veterinary Service</option>
                                     </select>
-                                </div>      
+                                </div>
                             </div>
                         </div>
-                        
                         <div class="row">
                             <div class="col-xl-6">
-                                <div class="input-box"> 
+                                <div class="input-box">
                                     <input type="text" name="form_phone" value="" placeholder="Phone number">
                                     <div class="icon">
                                         <span class="icon-phone"></span>
-                                    </div> 
-                                </div> 
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-xl-6">
-                                <div class="input-box"> 
+                                <div class="input-box">
                                     <input type="text" name="form_subject" value="" placeholder="Subject">
                                     <div class="icon">
                                         <span class="icon-pen"></span>
-                                    </div> 
-                                </div> 
-                            </div>    
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-xl-12"> 
-                                <div class="input-box">    
-                                    <textarea name="form_message" placeholder="Write message" required=""></textarea>
-                                    
+                                    </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="input-box">
+                                    <textarea name="form_message" placeholder="Write message" required=""></textarea>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="button-box text-center">
                                     <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
                                     <button class="btn-one gradient-bg-1" type="submit" data-loading-text="Please wait...">
                                         <span class="txt"><i class="icon-send"></i>Submit Now</span>
-                                    </button> 
+                                    </button>
                                 </div>
                             </div>
-                        </div> 
-                         
+                        </div>
                     </form>
-                </div>   
+                </div>
             </div>
         </div>
     </div>
 </section>
+
 
 
 @endsection
