@@ -28,7 +28,7 @@
                 <div class="col-xl-8 col-lg-7">
                     @if ($articles->isEmpty())
                         <div class="text-center">
-                            Data not found!
+                            Belum ada Berita!
                         </div>                        
                     @else
                         <div class="blog-posts">   

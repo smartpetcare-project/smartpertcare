@@ -1,7 +1,7 @@
 @extends('layouts.main-layout')
 @section('title', 'FAQ')
 @section('content')
-<section class="breadcrumb-area" style="background-image: url({{ URL::asset('main-website/images/breadcrumb/breadcrumb-1.png') }});">
+<section class="breadcrumb-area" style="background-image: url({{ URL::asset('main-website/images/slides/salshi.jpg') }});">
     <div class="banner-curve"></div>
     <div class="container">
         <div class="row">

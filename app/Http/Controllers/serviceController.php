@@ -242,4 +242,29 @@ class ServiceController extends Controller
 
         return redirect()->route('service.index')->with('success', 'Service deleted successfully');
     }
+
+    public function preview($uuid)
+    {
+        $service = Service::where('uuid', $uuid)->with(['category', 'ratings.user', 'user'])->first()->toArray();
+
+        $service['image_preview'] = asset('storage/' . $service['image_preview']);
+        $service['image_header'] = asset('storage/' . $service['image_header']);
+        $service['image_content'] = json_decode($service['image_content']);
+        $service['image_content'] = array_map(function ($image) {
+            return asset('storage/' . $image);
+        }, $service['image_content']);
+
+        $service['category_name'] = $service['category']['name'] ?? 'No Category';
+
+        $service['created_at'] = Carbon::parse($service['created_at'])->format('d M Y, H:i');
+        $service['updated_at'] = Carbon::parse($service['updated_at'])->format('d M Y, H:i');
+
+        $ratings = $service['ratings'];
+        $averageRating = !empty($ratings) ? number_format(array_sum(array_column($ratings, 'rating')) / count($ratings), 1) : '0.0';
+        $service['average_rating'] = $averageRating;
+
+        $countRating = count($ratings);
+
+        return view('service.preview', compact('service', 'countRating'));
+    }
 }

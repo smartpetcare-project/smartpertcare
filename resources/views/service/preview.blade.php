@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Preview Artikel
+    Preview Layanan
 @endsection
 @push('css')
     <style>
@@ -21,7 +21,7 @@
     </style>
 @endpush
 @section('content')
-    <x-page-title title="Smart Pets Care" subtitle="Preview Artikel" />
+    <x-page-title title="Smart Pets Care" subtitle="Preview Layanan" />
 
     <div class="card">
         <div class="card-body">
@@ -29,12 +29,12 @@
                 class="d-flex flex-lg-row flex-column align-items-start align-items-lg-center justify-content-between gap-3">
                 <div class="flex-grow-1">
                     <div class="d-flex flex-row gap-2">
-                        <h5 class="fw-bold">{{ $article['title'] }}</h5>
+                        <h5 class="fw-bold">{{ $service['title'] }}</h5>
                         <span
-                            class="badge d-flex align-items-center {{ $article['is_publish'] == 1 ? 'bg-grd-success' : 'bg-grd-danger' }}">{{ $article['is_publish'] == 1 ? 'Publish' : 'Unpublish' }}</span>
+                            class="badge d-flex align-items-center {{ $service['is_publish'] == 1 ? 'bg-grd-success' : 'bg-grd-danger' }}">{{ $service['is_publish'] == 1 ? 'Publish' : 'Unpublish' }}</span>
                     </div>
-                    <p class="mb-0">Penulis : {{ $article['user']['name'] }} - {{ $article['updated_at'] }}</p>
-                    <p class="mb-0">Kategori : {{ $article['category']['name'] }}</p>
+                    <p class="mb-0">Penulis : {{ $service['user']['name'] }} - {{ $service['updated_at'] }}</p>
+                    <p class="mb-0">Kategori : {{ $service['category']['name'] }}</p>
                 </div>
                 <div class="overflow-auto">
                     <div class="btn-group position-static">
@@ -46,20 +46,20 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <button type="button"
-                                        class="dropdown-item {{ $article['is_publish'] == 1 ? 'text-danger' : 'text-success' }}"
-                                        onclick="setChangeStatusForm('article','{{ $article['uuid'] }}', {{ $article['is_publish'] }})">
-                                        {{ $article['is_publish'] == 0 ? 'Publish' : 'Unpublish' }}
+                                        class="dropdown-item {{ $service['is_publish'] == 1 ? 'text-danger' : 'text-success' }}"
+                                        onclick="setChangeStatusForm('service','{{ $service['uuid'] }}', {{ $service['is_publish'] }})">
+                                        {{ $service['is_publish'] == 0 ? 'Publish' : 'Unpublish' }}
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="dropdown-item text-danger" data-bs-toggle="modal"
                                         data-bs-target="#confirmDeleteModal"
-                                        onclick="setDeleteForm('article', '{{ $article['uuid'] }}')">
+                                        onclick="setDeleteForm('service', '{{ $service['uuid'] }}')">
                                         Delete
                                     </button>
 
-                                    <form id="article-delete-form-{{ $article['uuid'] }}"
-                                        action="{{ route('article.destroy', $article['uuid']) }}" method="POST"
+                                    <form id="service-delete-form-{{ $service['uuid'] }}"
+                                        action="{{ route('service.destroy', $service['uuid']) }}" method="POST"
                                         style="display: inline;">
                                         @csrf
                                         @method('DELETE')
@@ -77,18 +77,18 @@
         <div class="card w-100">
             <div class="card-body">
                 <h5 class="mb-3 fw-bold">
-                    <span class="badge align-items-center bg-grd-primary">{{ $article['category']['name'] }}</span>
+                    <span class="badge align-items-center bg-grd-primary">{{ $service['category']['name'] }}</span>
                 </h5>
-                <div class="article-content">
-                    <h3 class="fw-bold">{{ $article['title'] }}</h3>
+                <div class="service-content">
+                    <h3 class="fw-bold">{{ $service['title'] }}</h3>
                     <div class="d-flex flex-row gap-4">
                         <div class="font-14">
                             <i class="fadeIn animated bx bx-user"></i>
-                            <span class="ms-0">By {{ $article['user']['name'] }}</span>
+                            <span class="ms-0">By {{ $service['user']['name'] }}</span>
                         </div>
                         <div class="font-14">
                             <i class="fadeIn animated bx bx-calendar-week"></i>
-                            <span class="ms-0">{{ $article['updated_at'] }}</span>
+                            <span class="ms-0">{{ $service['updated_at'] }}</span>
                         </div>
                         <div class="font-14">
                             <i class="fadeIn animated bx bx-comment-detail"></i>
@@ -96,11 +96,11 @@
                         </div>
                     </div>
                     @php
-                        $imageContent = $article['image_content'];
+                        $imageContent = $service['image_content'];
                         $firstImages = array_slice($imageContent, 0, 2);
                         $lastImages = array_slice($imageContent, 2, 2);
 
-                        $contentParts = explode('</p>', $article['content']);
+                        $contentParts = explode('</p>', $service['content']);
                         $firstParagraph = $contentParts[0];
                         $middleContent = implode('</p>', array_slice($contentParts, 1, count($contentParts) - 3));
                         $lastParagraph = $contentParts[count($contentParts) - 2];
@@ -112,7 +112,7 @@
                         @if (!empty($firstImages))
                             <div class="image-gallery d-flex gap-2 mb-3 flex-wrap">
                                 @foreach ($firstImages as $image)
-                                    <img src="{{ $image }}" alt="{{ $article['title'] }}" class="img-thumbnail">
+                                    <img src="{{ $image }}" alt="{{ $service['title'] }}" class="img-thumbnail">
                                 @endforeach
                             </div>
                         @endif
@@ -122,7 +122,7 @@
                         @if (!empty($lastImages))
                             <div class="image-gallery d-flex gap-2 mb-3 flex-wrap">
                                 @foreach ($lastImages as $image)
-                                    <img src="{{ $image }}" alt="{{ $article['title'] }}" class="img-thumbnail">
+                                    <img src="{{ $image }}" alt="{{ $service['title'] }}" class="img-thumbnail">
                                 @endforeach
                             </div>
                         @endif
