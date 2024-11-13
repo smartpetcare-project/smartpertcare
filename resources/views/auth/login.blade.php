@@ -27,7 +27,7 @@
                             <h4 class="fw-bold">Get Started Now</h4>
                             <p class="mb-0">Enter your credentials to login your account</p>
 
-                            <div class="row g-3 my-4">
+                            {{-- <div class="row g-3 my-4">
                                 <div class="col-12 col-lg-6">
                                     <button
                                         class="btn btn-light py-2 font-text1 fw-bold d-flex align-items-center justify-content-center w-100"><img
@@ -40,13 +40,13 @@
                                             src="{{ URL::asset('build/images/apps/17.png') }}" width="20" class="me-2"
                                             alt="">Facebook</button>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="separator section-padding">
+                            {{-- <div class="separator section-padding">
                                 <div class="line"></div>
                                 <p class="mb-0 fw-bold">OR</p>
                                 <div class="line"></div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-body mt-4">
                                 <form method="POST" action="{{ route('login') }}" class="row g-3">
@@ -91,11 +91,11 @@
                                         </div>
                                     </div>
 
-                                    @if (Route::has('password.request'))
+                                    {{-- @if (Route::has('password.request'))
                                         <div class="col-md-6 text-end"> <a href="{{ route('password.request') }}">Forgot
                                                 Password ?</a>
                                         </div>
-                                    @endif
+                                    @endif --}}
 
                                     <div class="col-12">
                                         <div class="d-grid">
