@@ -3,7 +3,7 @@
     Dashboard
 @endsection
 @section('content')
-    
+
     <x-page-title title="Dashboard" subtitle="Analysis" />
 
     <div class="row">
@@ -13,8 +13,6 @@
                     <div class="row">
                         <div class="col-12 col-sm-7">
                             <div class="d-flex align-items-center gap-3 mb-3">
-                                <img src="https://placehold.co/110x110/png" class="rounded-circle bg-grd-info p-1"
-                                    width="60" height="60" alt="user">
                                 <div class="">
                                     <p class="mb-0 fw-semibold">Welcome back</p>
                                     <h4 class="fw-semibold fs-4 mb-0">{{ $user['name'] }}!</h4>
@@ -63,11 +61,11 @@
                         <div class="">
                             <h5 class="mb-0">{{ $countAllUser }}</h5>
                             <p class="mb-0">Active Users</p>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="chart-container2">
                         <img src="{{ URL::asset('main-website/images/user.png') }}" alt="" class="w-100">
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,11 +76,11 @@
                         <div class="">
                             <h5 class="mb-0">{{ $countAllArticle }}</h5>
                             <p class="mb-0">Total Artikel</p>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="chart-container2">
                         <img src="{{ URL::asset('main-website/images/article.png') }}" alt="" class="w-100">
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
