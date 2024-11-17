@@ -83,7 +83,7 @@
                 <div class="table-responsive white-space-nowrap">
                     <table class="table align-middle pb-5">
                         <thead class="table-light">
-                            <tr>                                
+                            <tr>
                                 <th>Judul Artikel</th>
                                 <th>Kategori</th>
                                 <th>Rating</th>
@@ -93,7 +93,7 @@
                         </thead>
                         <tbody>
                             @foreach ($articles as $item)
-                                <tr>                                    
+                                <tr>
                                     <td>
                                         <div class="d-flex align-items-center gap-3">
                                             <div class="product-box">

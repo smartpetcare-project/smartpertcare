@@ -1,5 +1,5 @@
 @extends('layouts.main-layout')
-@section('title', 'Detail Layanan')
+@section('title', 'Detail Product')
 @section('content')
 
     <style>
@@ -25,7 +25,7 @@
 
 
     <section class="breadcrumb-area"
-        style="background-image: url({{ URL::asset('main-website/images/breadcrumb/breadcrumb-1.png') }});">
+        style="background-image: url({{ URL::asset('main-website/images/slides/salshi.jpg') }});">
         <div class="banner-curve"></div>
         <div class="container">
             <div class="row">
@@ -87,9 +87,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
 
@@ -104,16 +101,19 @@
                                             Rp{{ $product['price'] }}
                                             {{-- <del>£399.99</del> --}}
                                         </h3>
-                                        <div class="review-box">
-                                            <ul>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star-half"></i></li>
-                                            </ul>
-                                            <span>(25 Customer review)</span>
-                                        </div>
+                                        @foreach ($product['ratings'] as $item)
+                                            <div class="review-box">
+                                                <ul>
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($i <= $item['rating'])
+                                                            <li><i class="fa fa-star"></i></li>
+                                                        @else
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                        @endif
+                                                    @endfor
+                                                </ul>
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <div class="product-text">
                                         {!! $product['description_mini'] !!}
@@ -130,34 +130,6 @@
 
                                     <div class="product-cart-box">
                                         <div class="row">
-                                            {{-- <div class="col-xl-4 col-lg-4 col-md-4">
-                                                <div class="input-box">
-                                                    <div class="title">
-                                                        <h4>Color</h4>
-                                                    </div>
-                                                    <select class="selectpicker" data-width="100%">
-                                                        <option selected="selected">Select Color</option>
-                                                        <option>Red</option>
-                                                        <option>Green</option>
-                                                        <option>Blue</option>
-                                                        <option>yellow</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4">
-                                                <div class="input-box">
-                                                    <div class="title">
-                                                        <h4>Size</h4>
-                                                    </div>
-                                                    <select class="selectpicker" data-width="100%">
-                                                        <option selected="selected">Select size</option>
-                                                        <option>XL</option>
-                                                        <option>L</option>
-                                                        <option>M</option>
-                                                        <option>LG</option>
-                                                    </select>
-                                                </div>
-                                            </div> --}}
                                             <div class="col-xl-4 col-lg-4 col-md-4">
                                                 <div class="input-box">
                                                     <div class="title">
@@ -167,47 +139,23 @@
                                                         <input class="quantity-spinner" type="text" value="2"
                                                             name="quantity">
                                                     </div>
-                                                    <div class="clear-selection"><a href="#">Clear Selection</a></div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row mt-5">
                                             <div class="col-xl-12">
                                                 <div class="product-details-button-box">
                                                     <div class="addto-cart-button">
-                                                        <button class="btn-one addtocart" type="submit">
-                                                            <span class="txt"><i class="icon-basket"></i>Add To
-                                                                Cart</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="wishlist-button">
-                                                        <button class="btn-one wishlist" type="submit">
-                                                            <span class="txt"><i class="icon-basket"></i>Add To
-                                                                Wishlist</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="compare-button">
-                                                        <button class="btn-one compare" type="submit">
-                                                            <span class="txt"><i class="icon-basket"></i>Compare</span>
-                                                        </button>
+                                                        <a
+                                                            href="https://wa.me/6285779410576?text={{ urlencode('Halo, saya ingin membeli produk berikut: \nNama Produk: ' . $product['name'] . '\nKategori: ' . $product['category_name'] . '\nHarga: Rp' . $product['price'] . '\nJumlah: ' . 1) }}"
+                                                            target="_blank"
+                                                            class="btn-one buy-now">
+                                                            <span class="txt"><i class="icon-basket"></i> Beli</span>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="share-products-socials">
-                                        <h5>Share This:</h5>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-facebook fb" aria-hidden="true"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-twitter tw" aria-hidden="true"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-pinterest pin" aria-hidden="true"></i></a>
-                                            </li>
-                                            <li><a href="#"><i class="fa fa-linkedin lin" aria-hidden="true"></i></a>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -249,10 +197,6 @@
                                             @foreach ($product['ratings'] as $item)
                                                 <div class="single-review-outer-box">
                                                     <div class="single-review-box">
-                                                        <div class="image-holder">
-                                                            <img src="{{ URL::asset('main-website/images/shop/review-1.png') }}"
-                                                                alt="Awesome Image">
-                                                        </div>
                                                         <div class="text-holder">
                                                             <div class="top">
                                                                 <div class="name">
@@ -263,9 +207,9 @@
                                                                     <ul>
                                                                         @for ($i = 1; $i <= 5; $i++)
                                                                             @if ($i <= $item['rating'])
-                                                                                <li><i class="fa fa-star"></i></li>                                                                                
+                                                                                <li><i class="fa fa-star"></i></li>
                                                                             @else
-                                                                                <li><i class="fa fa-star-o"></i></li>                                                                                
+                                                                                <li><i class="fa fa-star-o"></i></li>
                                                                             @endif
                                                                         @endfor
                                                                     </ul>

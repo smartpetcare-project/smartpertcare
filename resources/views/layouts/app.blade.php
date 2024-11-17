@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="blue-theme">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light-theme">
 
 <head>
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
     @include('layouts.topbar')
 
     @include('layouts.sidebar')
-    
+
     <!--start main wrapper-->
     <main class="main-wrapper">
         <div class="main-content">

@@ -2,7 +2,7 @@
    <aside class="sidebar-wrapper" data-simplebar="true">
        <div class="sidebar-header">
            <div class="logo-icon">
-               <img src="{{ URL::asset('build/images/logo-icon.png') }}" class="logo-img" alt="">
+               <img src="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}" class="logo-img" alt="">
            </div>
            <div class="logo-name flex-grow-1">
                <h5 class="mb-0">SmartPet Care</h5>
@@ -22,9 +22,9 @@
                    </a>
                    <ul>
                        <li><a href="{{ url('/admin') }}"><i class="material-icons-outlined">arrow_right</i>Analysis</a>
-                       </li>                       
+                       </li>
                    </ul>
-               </li>                              
+               </li>
                {{-- <li class="menu-label">UI Elements</li> --}}
                {{-- <li>
                    <a href="{{ url('/cards') }}">

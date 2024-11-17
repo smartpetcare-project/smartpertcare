@@ -11,10 +11,10 @@
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180"
-        href="{{ URL::asset('main-website/images/favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ URL::asset('main-website/images/favicon/favicon-32x32.png') }}"
+        href="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}">
+    <link rel="icon" type="image/png" href="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}"
         sizes="32x32">
-    <link rel="icon" type="image/png" href="{{ URL::asset('main-website/images/favicon/favicon-16x16.png') }}"
+    <link rel="icon" type="image/png" href="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}"
         sizes="16x16">
 
 </head>
