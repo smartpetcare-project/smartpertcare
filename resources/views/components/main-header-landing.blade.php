@@ -78,7 +78,7 @@
                                                 $products = \App\Models\Service::where('is_publish', 1)->get();
                                             @endphp
                                             @foreach ($products as $item)
-                                                <li><a href="{{ route('service.detail', $item->uuid) }}">{{ $item->name }}</a></li>
+                                                <li><a href="{{ route('service.detail', $item->uuid) }}">{{ $item->title }}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>
@@ -103,8 +103,13 @@
                 <!-- Start Header Right -->
                 <div class="header-right pull-right clearfix">
                     @auth
-                        <!-- Tombol menuju Dashboard jika pengguna login -->
-                        <a href="{{ route('dashboard') }}" class="btn btn-primary" style="margin-top: 25px;">Dashboard</a>
+                        @if(auth()->user()->role == 'admin')
+                            <!-- Show Dashboard button if the user is an admin -->
+                            <a href="{{ route('dashboard') }}" class="btn btn-primary" style="margin-top: 25px;">Dashboard</a>
+                        @else
+                            <!-- Show user's name if the user is not an admin -->
+                            <span class="btm btn-primary" style="margin-top: 25px;">{{ auth()->user()->name }}</span>
+                        @endif
                     @else
                         <!-- Tombol Hidden Content jika pengguna belum login -->
                         <div class="hidden-content-button bar-box">

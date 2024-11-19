@@ -111,10 +111,11 @@
                                 <div class="input-box"> 
                                     <select class="selectpicker" data-width="100%">
                                         <option selected="selected">Select Subject</option>
-                                        <option>Rosalina D. William</option>
-                                        <option>Miranda H. Halim</option>
-                                        <option>Hilixer D. Browni</option>
-                                        <option>Yokolili Y. Yankee</option>
+                                        <option>Muhammad Rifky Rachman</option>
+                                        <option>Muhamad Yusuf Firdaus</option>
+                                        <option>Thoifatul Munawwaroh</option>
+                                        <option>Akhmad Imam Firjatullah</option>
+                                        <option>Muhammad Haikal Adhim</option>
                                     </select>     
                                 </div>      
                             </div>

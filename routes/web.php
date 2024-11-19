@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GroomingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\ProductController;
@@ -27,6 +28,11 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pet-gromming', [HomeController::class, 'gromming']);
+    Route::post('grooming', [GroomingController::class, 'store'])->name('grooming.store');
+});
+
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
@@ -47,6 +53,9 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/change-status/{uuid}', [ServiceController::class, 'changeStatus'])->name('service.change-status');
         Route::get('/preview/{uuid}', [ServiceController::class, 'preview'])->name('service.preview');
     });
+
+    Route::get('/grooming', [GroomingController::class, 'show']);
+    Route::post('/grooming/update-status/{id}', [GroomingController::class, 'updateStatus'])->name('grooming.update-status');
     
     Route::resource('category', CategoryController::class);
 

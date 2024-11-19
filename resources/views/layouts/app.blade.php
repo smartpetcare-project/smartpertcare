@@ -7,7 +7,7 @@
     <title>@yield('title') | Admin SmartPets Care</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ URL::asset('main-website/images/favicon/favicon-32x32.png') }}" type="image/png">
+    <link rel="icon" href="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}" type="image/png">
 
     @include('layouts.head-css')
 </head>

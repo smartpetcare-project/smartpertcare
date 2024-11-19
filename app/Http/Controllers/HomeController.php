@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Product;
 use App\Helpers\ContentFormatter;
+use App\Models\Grooming;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -141,5 +142,12 @@ class HomeController extends Controller
     public function faq()
     {
         return view('main-website.faq');
+    }
+
+    public function gromming()
+    {
+        $userId = auth()->user()->id;
+        $groomings = Grooming::where('user_id', $userId)->get();
+        return view('main-website.grooming', compact('groomings'));
     }
 }

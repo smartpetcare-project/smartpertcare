@@ -114,9 +114,9 @@
 
                         <div class="callto-action-box text-center"
                             style="background-image: url({{ URL::asset('main-website/images/resources/callto-action-box-bg.jpg') }})">
-                            <p>Call To Action</p>
-                            <h3>Enjoy Your Whole<br> Weekend.</h3>
-                            <a class="btn-one" href="#"><span class="txt">Appointment</span></a>
+                            <p>Ayo Reservasi Sekarang</p>
+                            <h3>Jagalah Kesehatan<br> Hewan.</h3>
+                            <a class="btn-one" href="{{ url('/pet-gromming') }}"><span class="txt">Reservasi Pet Grooming</span></a>
                         </div>
 
                     </div>
