@@ -50,7 +50,7 @@
                     <tbody>
                         @forelse ($groomings as $grooming)
                             <tr>
-                                <td>{{ $grooming->id }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $grooming->hewan }}</td>
                                 <td>{{ $grooming->nohp }}</td>
                                 <td>{{ $grooming->alamat }}</td>

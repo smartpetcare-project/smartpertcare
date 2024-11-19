@@ -40,7 +40,7 @@ class GroomingController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->route('main-website.grooming')->with('success', 'Reservasi berhasil ditambahkan.');
+        return redirect()->back()->with('success', 'Reservasi Berhasil dibuat');        
     }
 
     public function updateStatus(Request $request, $id)
