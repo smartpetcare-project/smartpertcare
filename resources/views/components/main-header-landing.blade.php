@@ -1,5 +1,22 @@
+<style>
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+</style>
+
 <header class="main-header header-style-one">
-    <!--Start Header Top-->
+    <!-- Start Header Top -->
     <div class="header-top">
         <div class="outer-container">
             <div class="outer-box clearfix">
@@ -27,12 +44,12 @@
             </div>
         </div>
     </div>
-    <!--End header Top-->
+    <!-- End Header Top -->
 
     <div class="header">
         <div class="outer-container">
             <div class="outer-box clearfix">
-                <!--Start Header Left-->
+                <!-- Start Header Left -->
                 <div class="header-left clearfix pull-left">
 
                     <div class="logo">
@@ -40,7 +57,7 @@
                     </div>
 
                     <div class="nav-outer clearfix">
-                        <!--Mobile Navigation Toggler-->
+                        <!-- Mobile Navigation Toggler -->
                         <div class="mobile-nav-toggler">
                             <div class="inner">
                                 <span class="icon-bar"></span>
@@ -77,61 +94,67 @@
                                 </ul>
                             </div>
                         </nav>
-                        <!-- Main Menu End-->
+                        <!-- Main Menu End -->
                     </div>
 
                 </div>
-                <!--End Header Left-->
+                <!-- End Header Left -->
 
-                <!--Start Header Right-->
+                <!-- Start Header Right -->
                 <div class="header-right pull-right clearfix">
-                    <div class="hidden-content-button bar-box">
-                        <a class="side-nav-toggler nav-toggler hidden-bar-opener" href="#">
-                            <ul>
-                                <li class="red2"></li>
-                                <li class="red2"></li>
-                                <li></li>
-                            </ul>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                            <ul>
-                                <li class="red2"></li>
-                                <li></li>
-                                <li class="red2"></li>
-                            </ul>
-                        </a>
-                    </div>
+                    @auth
+                        <!-- Tombol menuju Dashboard jika pengguna login -->
+                        <a href="{{ route('dashboard') }}" class="btn btn-primary" style="margin-top: 25px;">Dashboard</a>
+                    @else
+                        <!-- Tombol Hidden Content jika pengguna belum login -->
+                        <div class="hidden-content-button bar-box">
+                            <a class="side-nav-toggler nav-toggler hidden-bar-opener" href="#">
+                                <ul>
+                                    <li class="red2"></li>
+                                    <li class="red2"></li>
+                                    <li></li>
+                                </ul>
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                                <ul>
+                                    <li class="red2"></li>
+                                    <li></li>
+                                    <li class="red2"></li>
+                                </ul>
+                            </a>
+                        </div>
+                    @endauth
                 </div>
-                <!--End Header Right-->
+                <!-- End Header Right -->
             </div>
         </div>
     </div>
-    <!--End header -->
+    <!-- End Header -->
 
-    <!--Sticky Header-->
+    <!-- Sticky Header -->
     <div class="sticky-header">
         <div class="container">
             <div class="clearfix">
-                <!--Logo-->
+                <!-- Logo -->
                 <div class="logo float-left">
                     <a href="/" class="img-responsive"><img src="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}" alt="" title="" style="width: 82px; height: auto;"></a>
                 </div>
-                <!--Right Col-->
+                <!-- Right Col -->
                 <div class="right-col float-right">
                     <!-- Main Menu -->
                     <nav class="main-menu clearfix">
-                        <!--Keep This Empty / Menu will come through Javascript-->
+                        <!-- Keep This Empty / Menu will come through Javascript -->
                     </nav>
                 </div>
             </div>
         </div>
     </div>
-    <!--End Sticky Header-->
+    <!-- End Sticky Header -->
 
-    <!-- Mobile Menu  -->
+    <!-- Mobile Menu -->
     <div class="mobile-menu">
         <div class="menu-backdrop"></div>
         <div class="close-btn"><span class="icon flaticon-multiply"></span></div>
@@ -140,9 +163,9 @@
             <div class="nav-logo"><a href="index.html"><img
                         src="{{ URL::asset('main-website/images/resources/logosmartpetscare.png') }}"
                         alt="" title=""></a></div>
-            <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+            <div class="menu-outer"><!-- Here Menu Will Come Automatically Via Javascript / Same Menu as in Header -->
             </div>
-            <!--Social Links-->
+            <!-- Social Links -->
             <div class="social-links">
                 <ul class="clearfix">
                     <li><a href="#"><span class="fab fa fa-facebook-square"></span></a></li>
