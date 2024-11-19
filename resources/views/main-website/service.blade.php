@@ -285,7 +285,7 @@
                 <div class="col-xl-12 col-lg-12">
                     <div class="blog-carousel owl-carousel owl-theme owl-nav-style-one">
                         @foreach ($articles as $item)
-                            <div class="single-blog-style1 wow fadeInLeft" data-wow-delay="100ms"
+                            <div class="single-blog-style1 wow fadeInLeft item-carousel" data-wow-delay="100ms"
                                 data-wow-duration="1500ms">
                                 <div class="img-holder">
                                     <div class="date-box">

@@ -101,19 +101,28 @@
                                             Rp{{ $product['price'] }}
                                             {{-- <del>£399.99</del> --}}
                                         </h3>
-                                        @foreach ($product['ratings'] as $item)
-                                            <div class="review-box">
-                                                <ul>
-                                                    @for ($i = 1; $i <= 5; $i++)
-                                                        @if ($i <= $item['rating'])
-                                                            <li><i class="fa fa-star"></i></li>
-                                                        @else
-                                                            <li><i class="fa fa-star-o"></i></li>
-                                                        @endif
-                                                    @endfor
-                                                </ul>
-                                            </div>
-                                        @endforeach
+                                        @php
+                                            $averageRating = $product['average_rating'] ?? 0; // Pastikan ada default jika average_rating kosong
+                                        @endphp
+
+                                        <div class="review-box">
+                                            <ul>
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    @if ($i <= floor($averageRating))
+                                                        <li><i class="fa fa-star"></i></li>
+                                                    @elseif (
+                                                        $i == ceil($averageRating) &&
+                                                            $averageRating - floor($averageRating) >= 0.3 &&
+                                                            $averageRating - floor($averageRating) < 0.8)
+                                                        <li><i class="fa fa-star-half-o"></i></li>
+                                                    @else
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                    @endif
+                                                @endfor
+                                            </ul>
+                                        </div>
+
+
                                     </div>
                                     <div class="product-text">
                                         {!! $product['description_mini'] !!}
@@ -146,10 +155,8 @@
                                             <div class="col-xl-12">
                                                 <div class="product-details-button-box">
                                                     <div class="addto-cart-button">
-                                                        <a
-                                                            href="https://wa.me/6285779410576?text={{ urlencode('Halo, saya ingin membeli produk berikut: \nNama Produk: ' . $product['name'] . '\nKategori: ' . $product['category_name'] . '\nHarga: Rp' . $product['price'] . '\nJumlah: ' . 1) }}"
-                                                            target="_blank"
-                                                            class="btn-one buy-now">
+                                                        <a href="https://wa.me/6285779410576?text={{ urlencode('Halo, saya ingin membeli produk berikut: \nNama Produk: ' . $product['name'] . '\nKategori: ' . $product['category_name'] . '\nHarga: Rp' . $product['price'] . '\nJumlah: ' . 1) }}"
+                                                            target="_blank" class="btn-one buy-now">
                                                             <span class="txt"><i class="icon-basket"></i> Beli</span>
                                                         </a>
                                                     </div>

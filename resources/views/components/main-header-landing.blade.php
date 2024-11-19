@@ -75,7 +75,7 @@
                                         <ul>
                                             <li><a href="/service">View All Services</a></li>
                                             @php
-                                                $products = \App\Models\Product::where('is_publish', 1)->get();
+                                                $products = \App\Models\Service::where('is_publish', 1)->get();
                                             @endphp
                                             @foreach ($products as $item)
                                                 <li><a href="{{ route('service.detail', $item->uuid) }}">{{ $item->name }}</a></li>

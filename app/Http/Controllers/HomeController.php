@@ -93,6 +93,7 @@ class HomeController extends Controller
             ->get()
             ->map(fn($product) => ContentFormatter::formatProduct($product->toArray(), false));
 
+            // dd($products);
         return view('main-website.product', compact('products'));
     }
 
@@ -113,6 +114,11 @@ class HomeController extends Controller
             $rating['updated_at'] = Carbon::parse($rating['updated_at'])->format('d M Y');
             return $rating;
         });
+
+        $ratings = $product['ratings']->toArray();
+        $averageRating = !empty($ratings) ? number_format(array_sum(array_column($ratings, 'rating')) / count($ratings), 1) : '0.0';
+
+        $product['average_rating'] = $averageRating;        
 
         return view('main-website.product-detail', compact('product'));
     }

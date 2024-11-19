@@ -583,30 +583,39 @@ if ($('.testimonial-carousel').length) {
 
 // Blog Carousel
 if ($('.blog-carousel').length) {
-    $('.blog-carousel').owlCarousel({
-        loop: true,
-        margin: 30,
-        dots: false,
-        nav: true,
-        stagePadding: 0,
-        singleItem:true,
-        smartSpeed: 500,
-        autoplay: true,
-        autoplayTimeout:6000,
-        navText: [ '<span class="icon-down-arrow-1"></span>', '<span class="icon-down-arrow-1 right"></span>' ],
-        responsive:{
-            0:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            1024:{
-                items:3
+    $('.blog-carousel').each(function () {
+        var $this = $(this);
+        var itemCount = $this.find('.item-carousel').length; // Ganti '.item' dengan class item carousel Anda        
+        
+        $this.owlCarousel({
+            loop: itemCount >= 3, // Loop hanya jika item 3 atau lebih
+            margin: 30,
+            dots: false,
+            nav: true,
+            stagePadding: 0,
+            singleItem: true,
+            smartSpeed: 500,
+            autoplay: true,
+            autoplayTimeout: 6000,
+            navText: [
+                '<span class="icon-down-arrow-1"></span>',
+                '<span class="icon-down-arrow-1 right"></span>'
+            ],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                1024: {
+                    items: 3
+                }
             }
-        }
-    });    		
+        });
+    });
 }
+
 
 
 
