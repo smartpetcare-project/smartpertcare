@@ -26,6 +26,6 @@ class RoleMiddleware
         } else {
             Auth::logout();
             return redirect('/');
-        }        
+        }
     }
 }
