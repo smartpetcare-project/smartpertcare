@@ -2,7 +2,7 @@
 @section('title', 'Tambah Layanan')
 
 @push('css')
-    <link href="{{ asset('build/plugins/fancy-file-uploader/fancy_fileupload.css') }}" rel="stylesheet">    
+    <link href="{{ asset('build/plugins/fancy-file-uploader/fancy_fileupload.css') }}" rel="stylesheet">
     <style>
         .file-upload-wrapper {
             border: 2px dashed #555;
@@ -111,7 +111,7 @@
                             <div class="mb-4">
                                 <h5 class="mb-3">{{ $label }}</h5>
                                 <div class="file-upload-wrapper">
-                                    <input id="{{ $name }}" type="file" name="{{ $name }}" 
+                                    <input id="{{ $name }}" type="file" name="{{ $name }}"
                                         accept=".jpg, .png, image/jpeg, image/png" class="input-file"
                                         onchange="previewImage(this, '{{ $name }}_preview')">
                                     Klik untuk upload gambar
@@ -155,8 +155,8 @@
     <script src="{{ URL::asset('build/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
     <script src="{{ URL::asset('build/plugins/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ URL::asset('build/plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <script src="{{ URL::asset('build/js/main.js') }}"></script>    
-    <script src="https://cdn.tiny.cloud/1/aas4k1l6713vn5p9u83xj1ehtiegj6b1pfoc3rgtlmdwyi4o/tinymce/7/tinymce.min.js"
+    <script src="{{ URL::asset('build/js/main.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/39mhw15dyz85o6gol7097io76086ixkfl5d54wyzb7i908i9/tinymce/7/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script>
         tinymce.init({
