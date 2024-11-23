@@ -2,7 +2,7 @@
 @section('title', 'Tambah Artikel')
 
 @push('css')
-    <link href="{{ asset('build/plugins/fancy-file-uploader/fancy_fileupload.css') }}" rel="stylesheet">    
+    <link href="{{ asset('build/plugins/fancy-file-uploader/fancy_fileupload.css') }}" rel="stylesheet">
     <style>
         .file-upload-wrapper {
             border: 2px dashed #555;
@@ -159,9 +159,9 @@
     <script src="{{ URL::asset('build/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
     <script src="{{ URL::asset('build/plugins/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ URL::asset('build/plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <script src="{{ URL::asset('build/js/main.js') }}"></script>    
+    <script src="{{ URL::asset('build/js/main.js') }}"></script>
     {{-- <script src="{{ URL::asset('build/js/jquery.min.js') }}"></script> --}}
-    <script src="https://cdn.tiny.cloud/1/aas4k1l6713vn5p9u83xj1ehtiegj6b1pfoc3rgtlmdwyi4o/tinymce/7/tinymce.min.js"
+    <script src="https://cdn.tiny.cloud/1/39mhw15dyz85o6gol7097io76086ixkfl5d54wyzb7i908i9/tinymce/7/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script>
         tinymce.init({
